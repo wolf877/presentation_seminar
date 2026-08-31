@@ -1,0 +1,62 @@
+---
+title: "Promise of Future Searches for <br> Cosmic Topology"
+subtitle: "<span style='font-size: 0.8em; opacity: 0.8; font-weight: normal;'> Most based on Phys.Rev.Letters 132, 171502 (2024) <span>"
+author: "William S. Cunha"
+institute: "<b>I</b>nstituto de <b>F</b>ísica<br><b>U</b>niversidade <b>F</b>ederal do <b>R</b>io de <b>J</b>aneiro" 
+date: today
+date-format: long
+#bibliography: "mybib.bib"
+lang: en
+resources:
+      - "campo_topologico.png"
+      - theme.scss
+      - support.html
+title-slide-attributes:
+  data-background-image: "Logos/ufrj-horizontal-cor-rgb-completa-telas.svg" 
+  data-background-size: "20%" 
+  data-background-position: "top 5% left 5%"
+
+format:
+  revealjs: 
+    theme: [default, theme.scss]
+    background-transition: slide
+    mainfont: "Georgia, serif" 
+    #footer: "Footer text"
+    #logo: Logos/EPSBF_logo_hor_RGB_cor_positivo.png
+    include-in-header:
+      - text: |
+          <style>
+            .reveal .title-slide.level1::before {
+              background-image: url('campo_topologico.svg?v=2') !important;
+            }
+          </style>
+    transition: fade
+    transition-speed: fast
+    center: false             
+    section-title-slides: true
+    slide-number: false
+    include-after-body: support.html
+    toc: false
+---
+
+
+## Introduction
+
+## Frame 1
+
+## Frame 1
+
+# Searching 
+## Frame 1
+
+
+## Frame 1
+
+
+## Frame 1
+
+## Frame 1
+
+## Frame 1
+
+## Frame 1

@@ -1,0 +1,175 @@
+/*-- scss:defaults --*/
+
+// 1. Força a fonte serifada no corpo e nos títulos
+// Muda a fonte principal do texto
+$presentation-font-family: "Georgia", "Times New Roman", serif;
+// Muda a fonte dos títulos (cabeçalhos)
+$presentation-heading-font-family: "Georgia", "Times New Roman", serif;
+$presentation-font-size-root: 30px; 
+
+#title-slide .title {
+  color: #003366 !important;
+  font-size: 1.4em !important;
+  font-weight: bold;
+  margin-bottom: 2vh !important; 
+  margin-top: 15vh !important;
+}
+#title-slide .quarto-title-subtitle {
+  // color: #003366 !important;
+  // font-size: .6em !important;
+  // font-weight: normal;
+  margin-bottom: 5vh !important; 
+  //opacity: 0.75 !important;
+}
+
+#title-slide .quarto-title-author-name {
+  font-size: .8em !important;
+  margin-bottom: 5vh !important;
+}
+
+/* Instituto / Universidade */
+#title-slide .quarto-title-affiliation {
+  font-size: .8em !important;
+  margin-bottom: 10vh !important;
+;
+}
+#title-slide .quarto-title-date,
+#title-slide .date,
+#title-slide p.date {
+  //color: #264653 !important;
+  font-size: .65em !important;
+  margin-bottom: 0px !important;
+}
+
+.reveal .slide-number {
+  top: auto !important;
+  bottom: 20px !important;
+  right: auto !important;  /* Remove o alinhamento à direita */
+  left: 50% !important;    /* Joga para o meio da tela */
+  transform: translateX(-50%) !important;
+}
+
+.reveal:has(#title-slide.present) .slide-number {
+  display: none !important;
+}
+
+.reveal .slide-logo {
+  height: 55px !important;      /* Tente 75px ou 80px para um aumento sutil */
+  max-height: 60px !important; /* Libera a trava padrão do Quarto */
+}
+
+.reveal h2 {
+  font-size: 1.2em !important; /* Você pode usar 'em' ou 'px' (ex: 45px) */
+  color: #003366 !important;
+}
+
+.reveal p, 
+.reveal li {
+  font-size: .8em !important; /* Ajuste o tamanho do texto do corpo */
+}
+
+.reveal h2 {
+  position: relative !important;
+  display: block !important;
+  height: auto !important;       
+  margin-bottom: 1em !important; 
+  padding-bottom: 10px !important; 
+  border-bottom: none !important;
+}
+.reveal h2::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background-color: #003366; 
+}
+
+.reveal .progress span { background-color: #003366 !important; }
+.slide-menu-button a, .slide-menu-button i, .slide-menu-button { color: #003366 !important; }
+.reveal .slide-menu-button .fa-bars::before, .reveal .slide-menu-button .fas::before {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23003366" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>') !important;
+}
+
+.reveal:has(.level1.present) .slide-number {
+  display: none !important;
+}
+
+/* 2. Diminui levemente o tamanho do título da seção */
+.reveal .level1 h1 {
+  font-size: 1.3em !important; /* O padrão costuma ser 2.5em. Diminua ou aumente conforme achar melhor */
+}
+
+/* --- FUNDO COM FADE NOS SLIDES DE SEÇÃO (.level1) --- */
+.reveal .slides > section.level1 {
+    display: flow-root !important; /* Isso quebra o vazamento de margens/estilos */
+}
+
+/* 2. A capa de transição: Foco total no design automático */
+.reveal section.title-slide:not(#title-slide) {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* 3. Fade-out preservado (o ::before): */
+.reveal section.title-slide:not(#title-slide)::before {
+    content: "";
+    position: absolute;
+    top: -10%; 
+    left: -30%; /* Empurra a borda direita para além do monitor */
+    width: 120%;  /* Garante largura suficiente para cobrir o centro */
+    height: 120%;
+    background-size: cover;
+    background-position: center left;
+    background-repeat: no-repeat;
+     -webkit-mask-image: linear-gradient(to left, transparent 0%, black 100%);
+    mask-image: linear-gradient(to left, transparent 0%, black 100%);
+    
+    filter: contrast(1.2);
+    z-index: -1 !important;
+    opacity: 0.95;
+    display: block !important;
+}
+
+
+// .reveal section.title-slide:not(#title-slide)::before {
+//     content: "";
+//     position: absolute;
+    
+//     /* 1. Expande a área para fora da "caixa" padrão do Reveal */
+//     top: -25%; 
+//     right: -10%;
+//     width: 90%; 
+//     height: 150%;
+    
+//     background-image: var(--bg-topologico) !important;
+//     background-size: cover;
+//     background-position: center; /* Centralizado para aproveitar a expansão */
+//     background-repeat: no-repeat;
+    
+//     /* 2. Máscara Radial: Fade suave em TODAS as bordas (cima, baixo e laterais) */
+//     -webkit-mask-image: radial-gradient(ellipse 70% 50% at 75% 50%, black 40%, transparent 95%);
+//     mask-image: radial-gradient(ellipse 70% 50% at 75% 50%, black 40%, transparent 95%);
+    
+//     filter: contrast(1.2);
+//     z-index: -1 !important;
+//     opacity: 0.95;
+//     display: block !important;
+// }
+/* Ajusta o texto da seção */
+.reveal .level1 h1 {
+  text-align: right !important;
+  padding-left: 40% !important;
+  width: 70% !important; 
+}
+
+.reveal .fragment.highlight-custom {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 2. Aplica o seu azul escuro apenas no clique exato */
+.reveal .fragment.highlight-custom.visible {
+    color: #003366 !important; 
+    /*font-weight: bold; */
+}

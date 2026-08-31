@@ -1,0 +1,54 @@
+<script>
+window.addEventListener("load", function() {
+  if (window.Reveal) {
+    
+    // 1. Cria o contador
+    let container = document.querySelector('.reveal');
+    let contador = document.createElement('div');
+    
+    // 2. Aplica EXATAMENTE a sua formatação centralizada
+    contador.style.position = 'absolute';
+    contador.style.top = 'auto';
+    contador.style.bottom = '20px';
+    contador.style.right = 'auto';
+    contador.style.left = '50%';
+    contador.style.transform = 'translateX(-50%)';
+    
+    // Estética do texto (herda as fontes do tema)
+    contador.style.zIndex = '100';
+    contador.style.fontSize = '0.5em';
+    contador.style.fontFamily = 'var(--reveal-font-family)';
+    contador.style.color = 'var(--reveal-color)';
+    
+    container.appendChild(contador);
+
+    // 3. A função matemática
+    function atualizarContador() {
+      let slideAtual = window.Reveal.getCurrentSlide();
+      if (!slideAtual) return;
+
+      // TRAVA DE EXIBIÇÃO: Esconde na Capa Principal (id="title-slide") E nas transições (classe "title-slide")
+      if (slideAtual.id === 'title-slide' || slideAtual.classList.contains('title-slide')) {
+        contador.style.display = "none";
+        return;
+      }
+      
+      // Nos slides de conteúdo, garante que ele apareça
+      contador.style.display = "block";
+
+      // Pega todos os slides e filtra a capa e as transições para fora da conta
+      let todos = window.Reveal.getSlides();
+      let slidesDeConteudo = todos.filter(s => !(s.id === 'title-slide' || s.classList.contains('title-slide')));
+      
+      let index = slidesDeConteudo.indexOf(slideAtual);
+      if (index !== -1) {
+        contador.innerText = (index + 1) + " / " + slidesDeConteudo.length;
+      }
+    }
+
+    // 4. Dispara a atualização ao abrir e a cada troca de slide
+    window.Reveal.on('ready', atualizarContador);
+    window.Reveal.on('slidechanged', atualizarContador);
+  }
+});
+</script>
