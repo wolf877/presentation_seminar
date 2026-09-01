@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/willi/Documents/presentation_seminar/media/videos/presentation_seminar/720p30/partial_movie_files/TorusMorph/3814084516_176207915_1539191728.mp4'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media/videos/presentation_seminar/720p30/partial_movie_files/TorusMorph/1698470856_2685365445_1611322094.mp4'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media/videos/presentation_seminar/720p30/partial_movie_files/TorusMorph/1698470856_176207915_3578416360.mp4'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media/videos/presentation_seminar/720p30/partial_movie_files/TorusMorph/1698470856_2186781363_2446044207.mp4'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media/videos/presentation_seminar/720p30/partial_movie_files/TorusMorph/192114163_3795144686_2847789871.mp4'

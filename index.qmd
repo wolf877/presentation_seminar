@@ -1,0 +1,190 @@
+---
+title: "Promise of Future Searches for <br> Cosmic Topology"
+subtitle: "<span style='font-size: 0.8em; opacity: 0.8; font-weight: normal;'> Most based on Phys.Rev.Letters 132, 171502 (2024) <span>"
+author: "William S. Cunha"
+institute: "<b>I</b>nstituto de <b>F</b>ísica<br><b>U</b>niversidade <b>F</b>ederal do <b>R</b>io de <b>J</b>aneiro" 
+date: today
+date-format: long
+#bibliography: "mybib.bib"
+lang: en
+resources:
+      - "campo_topologico.png"
+      - theme.scss
+      - support.html
+title-slide-attributes:
+  data-background-image: "Logos/ufrj-horizontal-cor-rgb-completa-telas.svg" 
+  data-background-size: "20%" 
+  data-background-position: "top 5% left 5%"
+
+format:
+  revealjs: 
+    theme: [default, theme.scss]
+    background-transition: slide
+    mainfont: "Georgia, serif" 
+    embed-resources: true
+    #footer: "Footer text"
+    #logo: Logos/EPSBF_logo_hor_RGB_cor_positivo.png
+    include-in-header:
+      - text: |
+          <style>
+            .reveal .title-slide.level1::before {
+              background-image: url('cmb_custom.svg?v=2') !important;
+            }
+          </style>
+      - text: '<meta name="robots" content="noindex, nofollow">'
+    transition: fade
+    transition-speed: fast
+    center: false             
+    section-title-slides: true
+    slide-number: false
+    include-after-body: support.html
+    toc: false
+    jupyter: python3
+---
+
+
+## Motivation
+
+The notion that one geometry can be assigned by more than one topology is very old. Even Einstein and de Sitter noted that the $dS$ geometry which was discovered in the topology $\mathbb{R}^1 \times \mathbb{S}^3$ also admits the topology $\mathbb{R}^1 \times \mathbb{P}^3$. 
+
+<!--Another example is the $AdS$  geometry first discovered in the topology $\mathbb{R}^1 \times \mathbb{S}^3$ but also admis the topology $\mathbb{R}^1\times \mathbb{R}^3$-->
+
+The cosmological solution FLRW metric also admits more than one topology ($\mathbb{E}^3$, $\mathbb{S}^3$, $\mathbb{H}^3$). Howerver, the most common assumption is that the topology of the Universe is simply connected, but there is no reason bayond simplicity to assume this. In fact, there are some indications that the Universe may be multiply connected:
+
+- Quantum processes in the early Universe may have created a non-trivial topology;
+- The closure of of space ins considered as a necessaty condition for quantum theories of gravity;
+- The universe can be finite and multiply connected, but still have a flat geometry;
+- The comisc microwave background (CMB) apresent a statiscally anisotopic correlations, that would result from a non-trivial topology.
+
+Thus, the cosmic topology refers the study of the spatial sections of the manifold describing the Universe, in the largest scales, in other words, the global properties of the Universe. 
+
+<!--The main goal of this field is to determine the shape and size of the Universe and to find out if the Universe is finite or infinite, and if it is multiply conncected or simply connected-->
+
+# Topologia
+## Where is topology?
+
+The mathematical framework that studies the continuity of manifolds: topological properties are invariant under continuous deformations: stretching, squeezing, or kneading don't change the topological properties of a manifold. On the other hand, cutting, tearing, or making holes changes them.
+
+Class 1: Soccer ball, rugby ball, and a plate are topologically equivalent;
+
+Class 2: A coffee cup, a curtaing ring, and a doounut are topologically equivalent;
+
+## Homeomorphism
+
+The continuous transformations are mathematically desccribed by homeomorphisms. 
+
+Consider the two manifolds $\mathcal{M}_1$ and $\mathcal{M}_2$. A homeomorphism is a continuous map $f: \mathcal{M}_1 \to \mathcal{M}_2$ that has a continuous inverse $f^{-1}: \mathcal{M}_2 \to \mathcal{M}_1$. 
+
+If there exists a homeomorphism between two manifolds, they are said to be homeomorphic. 
+
+Homeomorphic manifolds belongs to the same topological class. Thus, the topological works is classifying manifolds into topological classes.
+
+## Bidimiensional torus
+
+```{python}
+#| echo: false
+#| output: false
+#| cache: true
+
+from manim import *
+
+# Configurações do Manim para integração perfeita
+config.media_dir = "./media_manim"
+config.verbosity = "ERROR" # Suprime os logs e avisos
+config.transparent = True  # Ativa o fundo transparente
+config.format = "webm"     # Formato obrigatório para transparência
+config.pixel_height = 720
+config.pixel_width = 1280
+config.frame_rate = 30
+
+class TorusMorph(ThreeDScene):
+    def construct(self):
+        self.set_camera_orientation(phi=65 * DEGREES, theta=45 * DEGREES)
+        t1 = ValueTracker(0.001)
+        t2 = ValueTracker(0.001)
+
+        def morph(u, v):
+            val_t1 = t1.get_value()
+            val_t2 = t2.get_value()
+            R, r = 2.5, 1.0 
+            
+            r_eff = r / val_t1
+            cx = r_eff * np.sin(val_t1 * u)
+            cz = r_eff * (1 - np.cos(val_t1 * u)) - (r * val_t1)
+            
+            R_eff = R / val_t2
+            rho = R_eff + cz
+            x = rho * np.cos(val_t2 * v) - R_eff + (R * val_t2)
+            y = rho * np.sin(val_t2 * v)
+            z = cx
+            return np.array([x, y, z])
+
+        surface = always_redraw(
+            lambda: Surface(
+                morph,
+                u_range=[-PI, PI],
+                v_range=[-PI, PI],
+                resolution=(24, 24),
+                fill_opacity=0.8,
+                checkerboard_colors=['#003366', '#003366']
+            )
+        )
+
+        self.add(surface)
+        self.play(t1.animate.set_value(1), run_time=3)
+        self.wait(0.5)
+        self.play(t2.animate.set_value(1), run_time=3)
+        self.wait(1)
+        self.move_camera(phi=45 * DEGREES, theta=135 * DEGREES, run_time=4)
+
+# Executa a renderização internamente
+scene = TorusMorph()
+scene.render()
+```
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+One way to construct topological surfaces is by identifying edges pairs of polygons and suitably gluing them together. 
+
+For example consider a rectangle:
+
+ - Identifying the top and bottom edges, we obtain a cylinder;
+
+ - Identifying the left and right edges of the cylinder, we obtain a torus.
+
+
+::: {.fragment}
+```{=html}
+<video data-autoplay muted playsinline style="width: 100%; display: block; margin: 0 auto; pointer-events: none; border: none; background: transparent;">
+  <source src="./media_manim/videos/720p30/TorusMorph.webm" type="video/webm">
+</video>
+```
+:::
+
+:::
+
+::: {.column width="40%"}
+
+The $\mathcal{S}^1\times \mathcal{S}^1$ torus which is flat everywhere, and despite the diagram, it is not like that. 
+
+The original rectangle is the fundamental domain of the torus. If one moves in the fundamental domain and reaches one of its edges, he/she will reapear in the opposite edge, a to called equivalent point.
+
+:::
+
+::::
+
+## The 3-Torus
+
+Using again the same idea of identifying edges of a polygon, we can construct the 3-torus: $\mathcal{S}^1\times \mathcal{S}^1\times \mathcal{S}^1$.
+
+The light emitted backwards crosses the faces of the parallelepiped behind us and reapears in opposite face in front of us. As the light propagates in all directions, we would see an infinity of images of any object in all angles. 
+
+
+
+## Frame 1
+
+## Frame 1
+
+## Frame 1
