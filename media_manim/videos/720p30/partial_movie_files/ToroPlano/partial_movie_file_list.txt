@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/720p30/partial_movie_files/ToroPlano/1193574672_477331625_2153957039.webm'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/720p30/partial_movie_files/ToroPlano/2224047352_2580605013_2600820111.webm'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/720p30/partial_movie_files/ToroPlano/2224047352_2522672313_746785165.webm'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/720p30/partial_movie_files/ToroPlano/2224047352_3483195821_3427750562.webm'

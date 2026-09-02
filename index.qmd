@@ -96,6 +96,7 @@ config.format = "webm"     # Formato obrigatório para transparência
 config.pixel_height = 720
 config.pixel_width = 1280
 config.frame_rate = 30
+config.output_file = "TorusMorph"
 
 class TorusMorph(ThreeDScene):
     def construct(self):
@@ -142,9 +143,108 @@ scene = TorusMorph()
 scene.render()
 ```
 
+```{python}
+#| echo: false
+#| output: false
+#| cache: true
+
+from manim import *
+
+config.media_dir = "./media_manim"
+config.verbosity = "ERROR"
+config.transparent = True
+config.format = "webm"
+config.pixel_height = 720*2
+config.pixel_width = 1280*2
+config.frame_rate = 30
+config.output_file = "ToroPlano"
+
+class ToroPlano(Scene):
+    def construct(self):
+        # Dimensões dinâmicas (10x6 preenche muito bem a tela sem cortar as letras)
+        largura, altura = 10, 6 
+        
+        # Fatores dinâmicos para a trajetória escalar junto com o retângulo
+        sx = largura / 6.0
+        sy = altura / 4.0
+        
+        # 1. O Retângulo Fundamental e Eixos
+        retangulo = Rectangle(width=largura, height=altura, color='#696969', fill_opacity=0.1)
+        
+        eixo_y = DashedLine(UP*(altura/2), DOWN*(altura/2), color=GRAY, dash_length=0.1)
+        eixo_x = DashedLine(LEFT*(largura/2), RIGHT*(largura/2), color=GRAY, dash_length=0.1)
+        
+        # Marcadores Topológicos e Letras amarrados às bordas dinâmicas
+        seta_cima = Triangle(color='#696969', fill_opacity=1).scale(0.15).rotate(-PI/2).move_to(UP * (altura/2))
+        seta_baixo = Triangle(color='#696969', fill_opacity=1).scale(0.15).rotate(-PI/2).move_to(DOWN * (altura/2))
+        label_i_cima = MathTex("I", color='#696969', font_size=36).next_to(seta_cima, UP, buff=0.1)
+        label_i_baixo = MathTex("I", color='#696969', font_size=36).next_to(seta_baixo, DOWN, buff=0.1)
+        
+        setas_esq = VGroup(
+            Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2),
+            Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2)
+        ).arrange(RIGHT, buff=0.1).rotate(PI/2).move_to(LEFT * (largura/2))
+        setas_dir = VGroup(
+            Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2),
+            Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2)
+        ).arrange(RIGHT, buff=0.1).rotate(PI/2).move_to(RIGHT * (largura/2))
+        label_j_esq = MathTex("J", color='#696969', font_size=36).next_to(setas_esq, LEFT, buff=0.1)
+        label_j_dir = MathTex("J", color='#696969', font_size=36).next_to(setas_dir, RIGHT, buff=0.1)
+        
+        self.add(retangulo, eixo_x, eixo_y) #seta_cima, seta_baixo, setas_esq, setas_dir)
+        self.add(label_i_cima, label_i_baixo, label_j_esq, label_j_dir)
+
+        # 2. A Partícula
+        bolinha = Dot(color='#003366', radius=0.15)
+        
+        # Coordenadas da trajetória reescaladas proporcionalmente
+        ponto_inicial = np.array([-1.5 * sx, 1 * sy, 0])
+        ponto_i_cima  = np.array([0, altura/2, 0])
+        ponto_i_baixo = np.array([0, -altura/2, 0])
+        ponto_j_dir   = np.array([largura/2, -0.5 * sy, 0])
+        ponto_j_esq   = np.array([-largura/2, -0.5 * sy, 0])
+        ponto_final   = np.array([1 * sx, 1.5 * sy, 0])
+
+        bolinha.move_to(ponto_inicial)
+        rastro = TracedPath(bolinha.get_center, stroke_color="#003366", stroke_opacity=0.6, stroke_width=4)
+        self.add(rastro, bolinha)
+
+        # 3. Motor de Velocidade Constante
+        # A velocidade determina o tempo baseado na distância percorrida
+        velocidade = 3.0 
+        def tempo(p1, p2):
+            return np.linalg.norm(p2 - p1) / velocidade
+
+        # 4. Trajetória 1 (Rumo a I superior)
+        self.play(bolinha.animate.move_to(ponto_i_cima), run_time=tempo(ponto_inicial, ponto_i_cima), rate_func=linear)
+        
+        # Teletransporte 1
+        rastro.clear_updaters() 
+        bolinha.move_to(ponto_i_baixo)
+        rastro2 = TracedPath(bolinha.get_center, stroke_color="#003366", stroke_opacity=0.6, stroke_width=4)
+        self.add(rastro2)
+        
+        # 5. Trajetória 2 (Rumo a J direito)
+        self.play(bolinha.animate.move_to(ponto_j_dir), run_time=tempo(ponto_i_baixo, ponto_j_dir), rate_func=linear)
+        
+        # Teletransporte 2
+        rastro2.clear_updaters()
+        bolinha.move_to(ponto_j_esq)
+        rastro3 = TracedPath(bolinha.get_center, stroke_color="#003366", stroke_opacity=0.6, stroke_width=4)
+        self.add(rastro3)
+        
+        # 6. Trajetória 3 (Interior do retângulo)
+        self.play(bolinha.animate.move_to(ponto_final), run_time=tempo(ponto_j_esq, ponto_final), rate_func=linear)
+        
+        self.wait(1)
+
+scene = ToroPlano()
+scene.render()
+```
+
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="50%"}
 
 One way to construct topological surfaces is by identifying edges pairs of polygons and suitably gluing them together. 
 
@@ -165,11 +265,19 @@ For example consider a rectangle:
 
 :::
 
-::: {.column width="40%"}
+::: {.column width="50%"}
 
-The $\mathcal{S}^1\times \mathcal{S}^1$ torus which is flat everywhere, and despite the diagram, it is not like that. 
+The $\mathbb{S}^1\times \mathbb{S}^1$ torus which is flat everywhere, and despite the diagram, it is not like that. 
 
 The original rectangle is the fundamental domain of the torus. If one moves in the fundamental domain and reaches one of its edges, he/she will reapear in the opposite edge, a to called equivalent point.
+
+::: {.fragment}
+```{=html}
+<video data-autoplay muted playsinline style="width: 100%; display: block; margin: 0 auto; pointer-events: none; border: none; background: transparent;">
+  <source src="./media_manim/videos/1440p30/ToroPlano.webm" type="video/webm">
+</video>
+```
+:::
 
 :::
 
@@ -177,10 +285,11 @@ The original rectangle is the fundamental domain of the torus. If one moves in t
 
 ## The 3-Torus
 
-Using again the same idea of identifying edges of a polygon, we can construct the 3-torus: $\mathcal{S}^1\times \mathcal{S}^1\times \mathcal{S}^1$.
+Using again the same idea of identifying edges of a polygon, we can construct the 3-torus: $\mathbb{S}^1\times \mathbb{S}^1\times \mathbb{S}^1$.
 
 The light emitted backwards crosses the faces of the parallelepiped behind us and reapears in opposite face in front of us. As the light propagates in all directions, we would see an infinity of images of any object in all angles. 
 
+![](T3.png){.absolute .fragment right="10" top="50" width="50%" height="50%"}
 
 
 ## Frame 1
