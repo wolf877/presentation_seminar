@@ -248,7 +248,7 @@ $presentation-font-size-root: 30px;
 /* 2. Aplica o seu azul escuro apenas no clique exato */
 .reveal .fragment.highlight-custom.visible {
     color: #003366 !important; 
-    /*font-weight: bold; */
+    font-weight: bold; 
 }
 $font-family-sans-serif: Georgia, serif !default;
 

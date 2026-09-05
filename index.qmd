@@ -38,11 +38,12 @@ format:
     section-title-slides: true
     slide-number: false
     include-after-body: support.html
-    toc: false
+    toc: true
+    toc-depth: 1
     jupyter: python3
 ---
 
-
+# Introduction
 ## Motivation
 
 The notion that one geometry can be assigned by more than one topology is very old. Even Einstein and de Sitter noted that the $dS$ geometry which was discovered in the topology $\mathbb{R}^1 \times \mathbb{S}^3$ also admits the topology $\mathbb{R}^1 \times \mathbb{P}^3$. 
@@ -59,9 +60,24 @@ The cosmological solution FLRW metric also admits more than one topology ($\math
 Thus, the cosmic topology refers the study of the spatial sections of the manifold describing the Universe, in the largest scales, in other words, the global properties of the Universe. 
 
 <!--The main goal of this field is to determine the shape and size of the Universe and to find out if the Universe is finite or infinite, and if it is multiply conncected or simply connected-->
+## Goals
 
-# Topologia
-## Where is topology?
+The main objetives of this work are:
+
+:::{.incremental}
+
+- Show that the cosmic topology remains eminently detectable;
+
+- Demonstrate that previous analyses have not considered several degrees of freedom;
+
+- Show that the constraints to from nonobservations of matching circles are less restricive than previously thought;
+
+- Demonstrate that anisotropic CMB correlations induced by topology can be detected even absent matching circles.
+
+:::
+
+# Topology
+## What is topology?
 
 The mathematical framework that studies the continuity of manifolds: topological properties are invariant under continuous deformations: stretching, squeezing, or kneading don't change the topological properties of a manifold. On the other hand, cutting, tearing, or making holes changes them.
 
@@ -79,7 +95,7 @@ If there exists a homeomorphism between two manifolds, they are said to be homeo
 
 Homeomorphic manifolds belongs to the same topological class. Thus, the topological works is classifying manifolds into topological classes.
 
-## Bidimiensional torus
+## 2D Torus
 
 ```{python}
 #| echo: false
@@ -285,15 +301,346 @@ The original rectangle is the fundamental domain of the torus. If one moves in t
 
 ## The 3-Torus
 
+:::: {.columns}
+
+::: {.column width="40%"}
+
 Using again the same idea of identifying edges of a polygon, we can construct the 3-torus: $\mathbb{S}^1\times \mathbb{S}^1\times \mathbb{S}^1$.
 
 The light emitted backwards crosses the faces of the parallelepiped behind us and reapears in opposite face in front of us. As the light propagates in all directions, we would see an infinity of images of any object in all angles. 
 
-![](T3.png){.absolute .fragment right="10" top="50" width="50%" height="50%"}
+
+:::
+
+::: {.column width="60%"}
+![](figs/T3.png)<!--{.absolute .fragment right="10" top="50" width="50%" height="50%"}-->
+:::
+
+::::
 
 
-## Frame 1
 
-## Frame 1
 
+## Homotopy
+
+First we define the loop in $\mathcal{M}$ as a path wich starts and ends at the same point $\mathbf{x}$.
+
+Two loops $\gamma$ and $\gamma'$ are homotopic if $\gamma$ can be continuously deformed into $\gamma'$.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="border-right: 2px solid #003366; text-align: center;"}
+
+![](figs/homotopic.svg){width="85%"}<!--{.absolute .fragment right="10" top="50" width="50%" height="50%"}-->
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {style="padding-left: 3%; text-align: center;"}
+![](figs/non_homotopic.svg){width="85%"}
+:::
+:::
+
+::::
+
+A manifold  is [simply connected]{.fragment .highlight-custom} if for any point $\mathbf{x}$, two loops are homotopic. If not the manifold is said to be [multi-connected]{.fragment .highlight-custom}. 
+
+Some examples are
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="border-right: 2px solid #003366; padding-right: 5%;"}
+
+:::{.fragment .highlight-custom style="text-align: center;"}
+Simple connected
+:::
+
+- Euclidean spaces: $\mathbb{R}^1$, $\mathbb{R}^2$, ..., $\mathbb{R}^n$;
+
+- Spheres: $\mathbb{S}^2$, $\mathbb{S}^3$, ..., $\mathbb{S}^n$.
+
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="padding-left: 5%;"}
+:::{.fragment .highlight-custom style="text-align: center;"}
+Multi-connected 
+:::
+
+- Circle: $\mathbb{S}^1$;
+
+- Cylinder: $\mathbb{S}^1\times \mathbb{R}$
+
+- Torus: $\mathbb{S}^1\times \mathbb{S}^1$, $\mathbb{S}^1\times \mathbb{S}^1\times \mathbb{S}^1$;
+
+:::
+:::
+
+::::
+
+## Fundamental Group of the cylinder
+
+The first fundamental group $\pi_1(\mathcal{M}, \mathbf{x})$ of a manifold $\mathcal{M}$ is the set of all homotopy classes of loops based at $\mathbf{x}$.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="border-right: 2px solid #003366; text-align: center;"}
+
+![](figs/homotopic.svg){width="85%"}<!--{.absolute .fragment right="10" top="50" width="50%" height="50%"}-->
+
+Any loop can be deformed to a one point, the group is just the identity.
+
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {style="padding-left: 3%; text-align: center;"}
+![](figs/non_homotopic.svg){width="85%"}
+
+The loops $\gamma$ and $\gamma'$ aren't homotopics. The group here is $\mathbb{Z}$ de inteiros related to the homotopic classes.
+
+:::
+:::
+
+::::
+
+As the manifold is connected the fundamental group for any point $\mathbf{x}$ is isomorphic to the fundamental group at any other point $\mathbf{x}'$. Thus, $\pi_1(\mathcal{M}, \mathbf{x})$ is independent of the base point and [it is a topological invariant of the manifold $\mathcal{M}$]{.fragment .highlight-custom}.
+
+
+## The Universal Covering Space of the cylinder
+```{python}
+#| echo: false
+#| output: false
+#| cache: true
+
+from manim import *
+import numpy as np
+
+config.media_dir = "./media_manim"
+config.verbosity = "ERROR"
+config.transparent = True
+config.format = "webm"
+config.pixel_height = 720
+config.pixel_width = 1280
+config.frame_rate = 30
+config.output_file = "CoveringSpace"
+
+class CoveringSpace(Scene):
+    def construct(self):
+        # ==========================================
+        # 1. O CILINDRO (Deslocado um pouco para a direita para caber na tela)
+        # ==========================================
+        cyl_center = np.array([-4.0, 0, 0])
+        cyl_w = 3.0
+        cyl_h = 4.5
+        
+        cyl_top = Ellipse(width=cyl_w, height=0.7, color="#000000", stroke_width=3).move_to(cyl_center + UP*(cyl_h/2))
+        cyl_bot = Ellipse(width=cyl_w, height=0.7, color="#000000", stroke_width=3).move_to(cyl_center + DOWN*(cyl_h/2))
+        
+        cyl_left = Line(cyl_bot.get_left(), cyl_top.get_left(), color="#000000", stroke_width=3)
+        cyl_right = Line(cyl_bot.get_right(), cyl_top.get_right(), color="#000000", stroke_width=3)
+        
+        z_top_band = 1.0
+        z_bot_band = -1.0
+        
+        # Correção do eixo de delimitação inferior (agora UP * z_bot_band que é UP * -1 = DOWN)
+        arc_top_front = ArcBetweenPoints(cyl_center + LEFT*(cyl_w/2) + UP*z_top_band, 
+                                         cyl_center + RIGHT*(cyl_w/2) + UP*z_top_band, angle=-PI/4, color="#000000", stroke_width=3)
+        arc_bot_front = ArcBetweenPoints(cyl_center + LEFT*(cyl_w/2) + UP*z_bot_band, 
+                                         cyl_center + RIGHT*(cyl_w/2) + UP*z_bot_band, angle=-PI/4, color="#000000", stroke_width=3)
+        
+        arc_top_back_base = ArcBetweenPoints(cyl_center + RIGHT*(cyl_w/2) + UP*z_top_band, 
+                                        cyl_center + LEFT*(cyl_w/2) + UP*z_top_band, angle=-PI/4, color="#000000")
+        arc_top_back = DashedVMobject(arc_top_back_base, num_dashes=15)
+        
+        arc_bot_back_base = ArcBetweenPoints(cyl_center + RIGHT*(cyl_w/2) + UP*z_bot_band, 
+                                        cyl_center + LEFT*(cyl_w/2) + UP*z_bot_band, angle=-PI/4, color="#000000")
+        arc_bot_back = DashedVMobject(arc_bot_back_base, num_dashes=15)
+
+        # Preenchimento
+        pts_bot = arc_bot_front.get_points()
+        pts_top = arc_top_front.get_points()[::-1] 
+        band_fill = Polygon(*pts_bot, *pts_top, fill_color="#000000", fill_opacity=0.2, stroke_width=0)
+
+        # Nome D' no tom roxo
+        label_D_prime = MathTex("D", color="#000000", font_size=36).move_to(cyl_center + UP*1.4 + LEFT*0.8)
+
+        self.add(band_fill, cyl_top, cyl_bot, cyl_left, cyl_right)
+        self.add(arc_top_front, arc_bot_front, arc_top_back, arc_bot_back, label_D_prime)
+
+        # ==========================================
+        # 2. TRAJETÓRIAS NO CILINDRO
+        # ==========================================
+        pt_x = cyl_center + DOWN*0.5 + LEFT*0.7
+        pt_x_prime = cyl_center + UP*0.5 + RIGHT*0.7
+        
+        # Pontos e letras agora em Grafite Escuro para aparecer no slide
+        dot_x = Dot(pt_x, color="#000000", radius=0.06)
+        dot_x_prime = Dot(pt_x_prime, color="#000000", radius=0.06)
+        label_x = MathTex("x", color="#000000", font_size=32).next_to(pt_x, DOWN+LEFT, buff=0.1)
+        label_x_prime = MathTex("x'", color="#000000", font_size=32).next_to(pt_x_prime, UP+RIGHT, buff=0.1)
+        
+        gamma1 = Arrow(pt_x, pt_x_prime, path_arc=-0.3, color="#000000", stroke_width=3, tip_length=0.15)
+        label_g1 = MathTex(r"\gamma_1", color="#000000", font_size=32).move_to(pt_x + UP*0.6 + RIGHT*0.2)
+        
+        pt_R = cyl_center + RIGHT*(cyl_w/2) + DOWN*0.1
+        pt_L = cyl_center + LEFT*(cyl_w/2) + UP*0.1
+        
+        g2_part1 = ArcBetweenPoints(pt_x, pt_R, angle=-0.2, color="#000000", stroke_width=3)
+        g2_part2_base = ArcBetweenPoints(pt_R, pt_L, angle=-PI/4, color="#000000", stroke_width=3)
+        g2_part2 = DashedVMobject(g2_part2_base, num_dashes=10) 
+        g2_part3 = Arrow(pt_L, pt_x_prime, path_arc=-0.2, color="#000000", stroke_width=3, tip_length=0.15)
+        label_g2 = MathTex(r"\gamma_2", color="#000000", font_size=32).move_to(pt_R + DOWN*0.3 + LEFT*0.5)
+
+        self.add(dot_x, dot_x_prime, label_x, label_x_prime)
+        self.add(gamma1, label_g1, g2_part1, g2_part2, g2_part3, label_g2)
+
+        # ==========================================
+        # 3. SETA CENTRAL DE MAPEAMENTO
+        # ==========================================
+        #333333
+        mapping_arrow = Arrow(LEFT*1.2, RIGHT*0.2, color="#000000", stroke_width=5, tip_length=0.2)
+        self.add(mapping_arrow)
+
+        # ==========================================
+        # 4. O PLANO DE RECOBRIMENTO (Direita) - Redimensionado para não cortar!
+        # ==========================================
+        p_bl = np.array([ 0.5, -2.5, 0])
+        p_br = np.array([ 5.5, -2.5, 0])
+        p_tr = np.array([ 6.5,  2.5, 0])
+        p_tl = np.array([ 1.5,  2.5, 0])
+        plane = Polygon(p_bl, p_br, p_tr, p_tl, color="#000000", fill_opacity=0, stroke_width=3)
+        
+        x_tl_band = 1.2
+        x_bl_band = 0.8
+        
+        band_plane = Polygon(
+            np.array([x_bl_band, -1.0, 0]), 
+            np.array([x_bl_band + 5.0, -1.0, 0]), 
+            np.array([x_tl_band + 5.0,  1.0, 0]), 
+            np.array([x_tl_band,  1.0, 0]), 
+            fill_color="#000000", fill_opacity=0.2, stroke_color="#000000", stroke_width=2
+        )
+        label_Delta_prime = MathTex(r"\Delta", color="#000000", font_size=36).move_to(np.array([1.8, 1.4, 0]))
+
+        self.add(plane, band_plane, label_Delta_prime)
+
+        # ==========================================
+        # 5. TRAJETÓRIAS NO PLANO (Levantamentos)
+        # ==========================================
+        X_base = np.array([1.3, -0.6, 0])
+        T_vec = np.array([1.4, 0, 0]) 
+        
+        X_prime = X_base + UP*1.1 + RIGHT*0.9
+        X_double_prime = X_prime + T_vec
+        X_triple_prime = X_double_prime + T_vec
+        
+        dots_plane = VGroup(
+            Dot(X_base, color="#000000", radius=0.06),
+            Dot(X_prime, color="#000000", radius=0.06),
+            Dot(X_double_prime, color="#000000", radius=0.06),
+            #Dot(X_triple_prime, color="#000000", radius=0.06)
+        )
+        
+        labels_plane = VGroup(
+            MathTex("X", color="#000000", font_size=32).next_to(X_base, DOWN+LEFT, buff=0.1),
+            MathTex("X'", color="#000000", font_size=32).next_to(X_prime, UP, buff=0.1),
+            MathTex("X''", color="#000000", font_size=32).next_to(X_double_prime, UP, buff=0.1),
+           #MathTex("X'''", color="#000000", font_size=32).next_to(X_triple_prime, UP, buff=0.1)
+        )
+
+        Gamma1 = Arrow(X_base, X_prime, color="#000000",  stroke_width=3, tip_length=0.15, buff=0)
+        label_Gamma1 = MathTex(r"\Gamma_1", color="#000000", font_size=32).move_to(X_base + UP*0.7 + LEFT*.0001)
+        
+        Gamma2 = Arrow(X_base, X_double_prime, color="#000000", stroke_width=3, tip_length=0.15, buff=0)
+        label_Gamma2 = MathTex(r"\Gamma_2", color="#000000", font_size=32).move_to(X_base + UP*0.2 + RIGHT*1.2)
+
+        self.add(dots_plane, labels_plane, Gamma1, Gamma2, label_Gamma1, label_Gamma2)
+        
+        self.wait(1)
+
+scene = CoveringSpace()
+scene.render()
+
+```
+
+Let $\mathcal{D}$ be a domain on a cylinder, bounded by two circular sections. If we unrroll the cylinder onto a plane, the correspondece between the $\mathcal{D}$ and the projected region $\Delta$, called _development_, is no longer one-to-one.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{=html}
+<video data-autoplay muted playsinline style="width: 100%; max-width: 900px; display: block; margin: 0 auto; pointer-events: none; border: none; background: transparent;">
+  <source src="./media_manim/videos/720p30/CoveringSpace.webm" type="video/webm">
+</video>
+```
+:::
+
+::: {.column width="40%"}
+
+One point $x$ and path $\gamma$ to a point $x'$ can be developed into a point $X$ and a path $\Gamma$ in the plane. 
+
+For a multiply connect domain $\mathcal{D}$  multi-connect there will be several paths $\gamma^1, \gamma^2, \dots$ from $x$ to $x'$, such that in their development, the corresponding paths $\Gamma_1, \Gamma_2, \dots$ generate distincts points $X', x'', \dots$ on $\mathbb{R}^2$
+
+:::
+
+::::
+
+::: {.fragment .highlight-custom style="text-align: center;"}
+
+The plane $\mathbb{R}^2$ is the universal covering space for the cylinder.
+
+:::
+
+
+## The Universal Covering Space
+
+This ideia can be extended to any manifold throught the following procedure:
+
+- Consider $\mathcal{M}$ endowed with a metric $g$. Choose a base point $x_0$ and consider all paths from this point to another point $y$. We build the covering space as a manifold $(\mathcal{C}, h)$ in which every point is obtained from a pair $(y, \gamma_i)$, varying $y$ in all of $\mathcal{M}$.
+
+- The metric $h$ is obtained by defining the interval between $\bar x(x, \gamma)$ and a nearby point $\bar x'(x', \gamma)$ to be equal to the interval ibetween the corresponding points $x$ and $x'$ in $\mathcal{M}$.
+
+By construction, the two manifolds are identical locally. However, they can be topologically distinct:
+
+- If $\mathcal{M}$ is simply connected, it is identical to $\mathcal{C}$;
+
+- If $\mathcal{M}$ is multiply connected, evey point in $\mathcal{M}$ generates multiple distinct points in $\mathcal{C}$.
+
+::: {.fragment .highlight-custom style="text-align: center;"}
+
+The universal covering space can be understood as "wrapping" of the original manifold.
+
+:::
+
+# 3d Euclidean space forms
+## The Euclidean Space
+
+The metric for the universial covering space, representing flat spatial geometry, is given by
+$$
+ds^2 = R^2 (dr^2+ r^2 d\theta^2+\sin{\theta}^2d\phi^2)
+$$
+Including this universal space, there are 18 flat space forms in total
+
+- 8 are non-compact (open);
+
+- 10 are compact (closed)
+
+We will focus in the compact ones, as the non-compact forms lack discrete eigenmodes. Of the ten compact forms, only six are orientable, and these will be the subject of our discussion.
+
+
+# The Eingmodes in Non-Trivial Topology
+## Frame 
+
+# The CMB temperature
 ## Frame 1
