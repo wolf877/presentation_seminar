@@ -1,0 +1,3 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/1440p30/partial_movie_files/IntrinsicE2/4063816800_3341852794_260279711.webm'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/1440p30/partial_movie_files/IntrinsicE2/3524977884_2613407950_1386570605.webm'

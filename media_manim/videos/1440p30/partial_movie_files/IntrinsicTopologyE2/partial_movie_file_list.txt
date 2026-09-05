@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/1440p30/partial_movie_files/IntrinsicTopologyE2/2221633639_705108399_2908817344.webm'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/1440p30/partial_movie_files/IntrinsicTopologyE2/3756648870_3888993152_2908817344.webm'
+file 'file:C:/Users/willi/Documents/presentation_seminar/media_manim/videos/1440p30/partial_movie_files/IntrinsicTopologyE2/3756648870_2613407950_1178935732.webm'

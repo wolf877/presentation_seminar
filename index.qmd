@@ -638,9 +638,119 @@ Including this universal space, there are 18 flat space forms in total
 
 We will focus in the compact ones, as the non-compact forms lack discrete eigenmodes. Of the ten compact forms, only six are orientable, and these will be the subject of our discussion.
 
+We can construct all possible manifolds starting from a parallelepiped or hexagonal prisms and using the glueing procedure.
+
+## Compact Forms from Parallelepiped
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](figs/dominio_fundamental.svg)
+
+::: {.incremental style="font-size:0.9em"}
+- $E_{18}$: The parallelipiped itself, it is the fundamental domain.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.incremental style="font-size:0.9em"}
+
+- $E_1$ Opposite faces united's by translation:
+$$
+\begin{aligned}
+ABCD \quad &\Longleftrightarrow\quad A'B'C'D'\\
+ABB'A' \quad &\Longleftrightarrow\quad DCC'D'\\
+ADD'A' \quad &\Longleftrightarrow\quad BCC'D'
+\end{aligned}
+$$
+
+- $E_2$ Opposite faces united's one pair rotated by $\pi$:
+$$
+\begin{aligned}
+ABCD \quad &\Longleftrightarrow\quad C'D'A'B'\\
+ABB'A' \quad &\Longleftrightarrow\quad DCC'D'\\
+ADD'A' \quad &\Longleftrightarrow\quad BCC'D'
+\end{aligned}
+$$
+
+- $E_3$ Opposite faces united's one pair rotated by $\pi/2$:
+$$
+\begin{aligned}
+ABCD \quad &\Longleftrightarrow\quad B'C'D'A'\\
+ABB'A' \quad &\Longleftrightarrow\quad DCC'D'\\
+ADD'A' \quad &\Longleftrightarrow\quad BCC'D'
+\end{aligned}
+$$
+
+
+- $E_4$ Opposite faces united's all three pairs rotated by $\pi$:
+$$
+\begin{aligned}
+ABCD \quad &\Longleftrightarrow\quad C'D'A'B'\\
+ABB'A' \quad &\Longleftrightarrow\quad C'D'D C\\
+ADD'A' \quad &\Longleftrightarrow\quad C'B'B C
+\end{aligned}
+$$
+:::
+:::
+
+
+::::
+
+## Compact Forms from Hexagonal Prism
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](figs/dominio_hexagonal.svg)
+
+:::
+
+::: {.column width="50%"}
+
+::: {.incremental style="font-size:0.9em"}
+
+- $E_5$: Opposite faces together, the top face being rotated by an angle $2\pi/3$ with respect to the bottom face
+$$
+\begin{aligned}
+ABCDEF \quad &\Longleftrightarrow\quad C'D'E'F'A'B'\\
+AA'F'F \quad &\Longleftrightarrow\quad CC'D'D \\
+EE'D'D \quad &\Longleftrightarrow\quad AA'B'B
+\end{aligned}
+$$
+
+- $E_6$: Opposite faces together, the top face being rotated by an angle $\pi/3$ with respect to the bottom face
+$$
+\begin{aligned}
+ABCDEF \quad &\Longleftrightarrow\quad B'C'D'E'F'A'\\
+AA'F'F \quad &\Longleftrightarrow\quad CC'D'D \\
+EE'D'D \quad &\Longleftrightarrow\quad AA'B'B
+\end{aligned}
+$$
+:::
+
+:::{.fragment}
+The motion of rotation accompanied by translation is called of corkscrew motiom and this defines the [corckscrew axis]{.fragment .highlight-custom}.
+:::
+:::
+
+
+::::
 
 # The Eingmodes in Non-Trivial Topology
 ## Frame 
 
 # The CMB temperature
+## Frame 1
+
+# Constraints to the Search
+## Frame 1
+
+# Conclusion
 ## Frame 1
