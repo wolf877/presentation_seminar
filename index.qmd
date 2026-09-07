@@ -5,7 +5,8 @@ author: "William S. Cunha"
 institute: "<b>I</b>nstituto de <b>F</b>ísica<br><b>U</b>niversidade <b>F</b>ederal do <b>R</b>io de <b>J</b>aneiro" 
 date: today
 date-format: long
-#bibliography: "mybib.bib"
+bibliography: "mybib.bib"
+cls: american-physical-society.csl
 lang: en
 resources:
       - "campo_topologico.png"
@@ -76,7 +77,7 @@ The main objetives of this work are:
 
 :::
 
-# Topology
+# Elements of Topology
 ## What is topology?
 
 The mathematical framework that studies the continuity of manifolds: topological properties are invariant under continuous deformations: stretching, squeezing, or kneading don't change the topological properties of a manifold. On the other hand, cutting, tearing, or making holes changes them.
@@ -623,6 +624,11 @@ The universal covering space can be understood as "wrapping" of the original man
 
 :::
 
+## Holonomy Group
+
+TEXTO
+
+
 # 3d Euclidean space forms
 ## The Euclidean Space
 
@@ -743,14 +749,174 @@ The motion of rotation accompanied by translation is called of corkscrew motiom 
 
 ::::
 
-# The Eingmodes in Non-Trivial Topology
-## Frame 
+# The Eingenmodes in Non-Trivial Topology
+## The Eingenmodes in the Covering Space
+
+::::{.columns}
+::: {.column width="50%"}
+
+The eingenmodes in the $E_{18}$ are
+$$
+\Upsilon^{E_{18}}_k(\vec x) = e^{i \vec k \cdot \left(\vec x - \vec x_0\right)}
+$$
+with
+$$
+\nabla^2\Upsilon^{E_{18}}_k(\vec x)=-k^2\Upsilon^{E_{18}}_k(\vec x)
+$$
+
+The adiabatic curvature perturbation field is
+$$
+\delta^{\mathcal{R}}(\vec x) = \int \frac{d^3k}{\left(2\pi\right)^3}\delta^{\mathcal{R}}(\vec k)\Upsilon^{E_{18}}_k(\vec x)
+$$
+where the amplitudes $\delta^{\mathcal{R}}(\vec k)$ are random variables defined by the dimensionless power spectrum. In general, we are interested in an obervable field $\delta^{\mathcal{x}}$, which related to $\delta^{\mathcal{R}}$ via a transfer function $\Delta^X$.
+
+:::
+::: {.column width="50%"}
+
+It is often more convenient to work in spherical cooridnates. By expanding the plane waves in the spherical harmonics, we can rewrite the eingenmodes as 
+$$
+\Upsilon^{E_{i}}_k=4\pi \sum_{lm} j_l\left(k r\right)\xi^{E_i;\hat k}_{klm}Y_{lm}\left(\theta,\phi\right)
+$$
+with the harmonic basis in $E_{18}$ given by
+$$
+\xi^{E_{18};\hat k}_{klm} = e^{-i \vec k \cdot\vec x_0}i^lY^*_{lm}(\hat k)\,.
+$$
+:::
+::::
+
+## Fluctuations and Correlations
+
+::::{.columns}
+::: {.column width="50%"}
+
+We can direclty write down the scalar field $\delta^{X}$ as 
+$$
+\delta^{X}\left(\theta, \phi\right) = \sum_{lm} a^{E_{18};X}_{lm} Y_{lm}\left(\theta,\phi\right)
+$$
+where
+$$
+a^{E_{18}; X}_{lm} = \frac{4\pi}{\left(2\pi\right)^3}\int d^3k \delta^{\mathcal{R}}\left(\vec k\right)\xi^{E_{18};\hat k}_{klm} \Delta_l^X\left(k\right)
+$$
+
+Since the random variables are encode in the spherical-harmonics coefficients, the two-point correlation function is given by
+$$
+C^{E_{18}; XY}_{lml'm'} \equiv \langle a_{lm}^X a_{l'm'}^{Y*} \rangle = C_l^{XY}\delta_{ll'}\delta_{mm'}
+$$
+This diagonal structure emerges from the isotropy o space $E_{18}$.
+:::
+::: {.column width="50%"}
+
+The non-trivial topology modifies the harmonic basis such that:
+
+:::{incremental}
+
+1. Only certain wavevectors $\vec k$ are allowed by the boundary conditions. For the compact spaces they form  a discrete lattice;
+
+2. The eingenmodes are not single covering-space eingenmodes but instead linear combinitions with different $\vec k$ of the same magnitude.
+:::
+
+These effects characterize the violation of statistical isotropy, in contrast with the $E_{18}$. As consequence, the correlation matrix of the two-point function is not diagonal in such topologies:
+$$
+\langle a^X_{lm} a^{Y*}_{l'm'} \rangle = C^{XY*}_{lml'm'}\,.
+$$
+:::
+
+::::
+
+## General Considerations
+
+Each eigenmode $\Upsilon^{E_{i}}_k(\vec x)$ must be invariant under every possible group transformation $G_\alpha\in \Gamma^{E_i}$
+$$
+\Upsilon^{E_{i}}_k\left(G_\alpha \vec x\right) = \Upsilon^{E_{i}}_k\left(x\right)
+$$
+
+For example, for a pure translation $\vec x\to \vec x + \vec T^{E_i}$, one must have 
+$$
+e^{i \vec k \cdot\left[ \left(\vec x -\vec x_0\right)+\vec T^{E_i}\right]} = e^{i \vec k \cdot\left(\vec x -\vec x_0\right)}\quad\text{Consequently}\quad \vec k \cdot\vec T^{E_i} = 2\pi n, \quad\text{for}\;  n\in \mathbb{Z}.
+$$
+
+This discretization is valid to manifolds of pure translations, such as the $E_1$. For manifolds with rotation, where the transformation is given $\vec x\to \mathbf{M}\vec x+\vec T^{E_i}$, additional conditions are imposed on the eigenmodes.
+
+Since harmonic basis is modified by each topology, the correlation matrix is also altered. For the compact forms, it takes the expression
+$$
+C^{E_i;XY}_{lml'm'}=\frac{\left(4\pi\right)^2}{V_{E_i}}\sum_{n\in \mathcal{N}^{E_i}}\Delta^{X}_l\left(k_n\right)\Delta^{Y*}_l\left(k_n\right)\frac{2\pi^2\mathcal{P}^{\mathcal{R}}\left(k_n\right)}{k^3_n}\xi^{E_i;\hat{k}_n}_{k_n l m}\left(\xi^{E_i;\hat{k}_n}_{k_n l' m'}\right)^*
+$$
 
 # The CMB temperature
-## Frame 1
+
+## The Cosmic Microwave Background {auto-animate="true"}
+
+::: {style="margin-top: 5%; text-align: center;"}
+![](figs/ilc_9yr_moll4096.png){data-id="cmb-map" width="100%"}
+:::
+
+## The CMB Temperature fluctuations {auto-animate="true"}
+
+:::: {.columns style="margin-top: 10%;"}
+
+
+::: {.column width="60%"}
+<!--::: {style="display: flex; align-items: center; min-height: 70vh;"}-->
+![](figs/ilc_9yr_moll4096.png){data-id="cmb-map" width="100%"}
+:::
+
+
+::: {.column width="40%"}
+
+The temperature fluctuations of the CMB are usually writen in terms of multipole coefficients
+$$
+\frac{\Delta T}{T}\left(\hat k\right) = \sum_{l=2}^{\infty} \sum_{m=-l}^{m=l}a_{lm}Y^{m}_l\left(\hat k\right)
+$$
+where the unit vector $\hat k$ denotes a given line of sight on the sky. This exactly matches our previous definition to $\delta^X$.
+
+Consequently, tracing how a non-trivial topology modifies these $a_{lm}$ coefficients is the key to understanting the violation of the statistical isotropy observed in the universe.
+
+
+<!--
+<br>
+The generic observable field $\delta^X$ corresponds directly to the CMB temperature anisotropies:
+$$
+\delta^X(\theta, \phi) \longrightarrow \frac{\Delta T}{T}(\theta, \phi)
+$$
+
+The hot and cold spots are mathematically described by the multipole coefficients $a_{lm}$:
+$$
+\frac{\Delta T}{T}(\theta, \phi) = \sum_{lm} a_{lm} Y_{lm}(\theta, \phi)
+$$
+-->
+:::
+
+::::
+
 
 # Constraints to the Search
+## The Matched Circles 
+
+
+## From the Non-Observation to a Constraint
+
+# News Constraints
 ## Frame 1
+
+## KL Divergence
+
+## New Constraint
 
 # Conclusion
 ## Frame 1
+
+# Bibliography
+## Teste
+
+[@COMPACT:2022gbl]
+
+[@COMPACT:2022nsu]
+
+[@COMPACT:2023rkp]
+
+[@Lachieze-Rey:1995qrb]
+
+## References
+
+::: {#refs}
+:::
