@@ -84,6 +84,9 @@ $presentation-font-family: "Georgia", "Times New Roman", serif;
 $presentation-heading-font-family: "Georgia", "Times New Roman", serif;
 $presentation-font-size-root: 30px; 
 
+$link-color: #003366;
+$link-color-hover: lighten($link-color, 15%);
+
 #title-slide .title {
   color: #003366 !important;
   font-size: 1.4em !important;
@@ -116,6 +119,21 @@ $presentation-font-size-root: 30px;
   //color: #264653 !important;
   font-size: .65em !important;
   margin-bottom: 0px !important;
+}
+
+#TOC ul {
+  list-style-type: decimal !important; /* Força a numeração no lugar dos bullets */
+  padding-left: 1.5em; /* Dá espaço para os números não encostarem na margem */
+}
+
+#TOC li {
+  font-size: 1.15em; /* Aumenta levemente o tamanho da fonte */
+  margin-bottom: 0.7em; /* Aumenta o espaçamento vertical entre os itens */
+}
+
+/* Opcional: Se quiser que os links do sumário não fiquem azuis como o resto da apresentação */
+#TOC a {
+  color: #333333 !important; /* Muda para um cinza escuro ou a cor que preferir */
 }
 
 .reveal .slide-number {
@@ -181,33 +199,51 @@ $presentation-font-size-root: 30px;
 }
 
 /* 2. A capa de transição: Foco total no design automático */
+// .reveal section.title-slide:not(#title-slide) {
+//   position: relative;  
+//   height: 100% !important;
+//   //display: flex !important;
+//   flex-direction: column !important;
+//   justify-content: center !important;
+// }
+
+/* 3. Fade-out preservado (o ::before): */
+/* Background seguro com fade-out (preservando o JS do Reveal) */
+/* Background à prova de falhas: dimensões fixas superando o canvas virtual */
+/* 1. Reset da Section: Devolve o controle para o Reveal.js não quebrar os próximos slides *//* 1. Reset seguro da Section */
+/* 1. Trava a Section para o tamanho exato do slide, matando o JS do Reveal */
 .reveal section.title-slide:not(#title-slide) {
     height: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+
+    align-items: center !important;    /* Centraliza o texto no meio da tela */
+    width: 100% !important;            /* Proíbe a caixa de ser maior que a TV/Tablet */
+    box-sizing: border-box !important;
+
+    padding-right: 5%;
 }
 
 /* 3. Fade-out preservado (o ::before): */
 .reveal section.title-slide:not(#title-slide)::before {
     content: "";
     position: absolute;
-    top: -10%; 
-    left: -30%; /* Empurra a borda direita para além do monitor */
-    width: 120%;  /* Garante largura suficiente para cobrir o centro */
-    height: 120%;
+    top: -100%; 
+    left: -100%; /* Empurra a borda direita para além do monitor */
+    width: 300%;  /* Garante largura suficiente para cobrir o centro */
+    height: 300%;
     background-size: cover;
     background-position: center left;
     background-repeat: no-repeat;
-     -webkit-mask-image: linear-gradient(to left, transparent 0%, black 100%);
-    mask-image: linear-gradient(to left, transparent 0%, black 100%);
+     -webkit-mask-image: linear-gradient(to left, transparent 35%, black 65%);
+    mask-image: linear-gradient(to left, transparent 35%, black 65%);
     
     filter: contrast(1.2);
     z-index: -1 !important;
     opacity: 0.95;
     display: block !important;
 }
-
 
 // .reveal section.title-slide:not(#title-slide)::before {
 //     content: "";

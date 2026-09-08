@@ -215,7 +215,7 @@ class ToroPlano(Scene):
         # 2. A Partícula
         bolinha = Dot(color='#003366', radius=0.15)
         
-        # Coordenadas da trajetória reescaladas proporcionalmente
+        # Coordenadas da trajetória reescaladas proporcional\ell m \elln te
         ponto_inicial = np.array([-1.5 * sx, 1 * sy, 0])
         ponto_i_cima  = np.array([0, altura/2, 0])
         ponto_i_baixo = np.array([0, -altura/2, 0])
@@ -978,7 +978,7 @@ The region of testable parameters is larger than previously believed.
 
 Recalling the covariance matrix equation:
 $$
-C^{E_i;XY}_{lml'm'}=\frac{\left(4\pi\right)^2}{V_{E_i}}\sum_{n\in \mathcal{N}^{E_i}}\Delta^{X}_l\left(k_n\right)\Delta^{Y*}_l\left(k_n\right)\frac{2\pi^2\mathcal{P}^{\mathcal{R}}\left(k_n\right)}{k^3_n}\xi^{E_i;\hat{k}_n}_{k_n l m}\left(\xi^{E_i;\hat{k}_n}_{k_n l' m'}\right)^*
+C^{E_i;XY}_{l\ell m \ell' m'}=\frac{\left(4\pi\right)^2}{V_{E_i}}\sum_{n\in \mathcal{N}^{E_i}}\Delta^{X}_\ell\left(k_n\right)\Delta^{Y*}_\ell\left(k_n\right)\frac{2\pi^2\mathcal{P}^{\mathcal{R}}\left(k_n\right)}{k^3_n}\xi^{E_i;\hat{k}_n}_{k_n \ell m}\left(\xi^{E_i;\hat{k}_n}_{k_n \ell' m'}\right)^*
 $$
 
 Visualizing the matrix elements for a specific topology ($E_2$ with $L_A=1.4L_{LSS}$):
@@ -999,12 +999,64 @@ where
 * $q\left(\left\{a_{\ell m}\right\}\right)$ is the probabilty ditribution function for the modes in a trivial topology.
 
 
-The $D_{KL}$ quantifies the information gained by discovering that the Universe is described by a non-trivial topology. For some "data" $a_{lm}, $D_{KL}$ favors nontrivial topology if it is bigger than 1. 
+The $D_{KL}$ quantifies the information gained by discovering that the Universe is described by a non-trivial topology. For any given realization of $a_{\ell m}$, a value $D_{KL}>1$ indicates that non-trivial topology is statistically favored. 
 
-## New Constraint
+## Interpreting the Divergence {auto-animate=true}
+
+::: {.r-stack}
+![](figs/divergence_lb.png){.fragment .fade-out fragment-index=1 width="90%" data-id="plot-cima"}
+
+![](figs/divergence_ell.png){.fragment .fade-in fragment-index=1 width="90%" data-id="plot-baixo"}
+:::
+
+## Interpreting the Divergence {auto-animate=true}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![](figs/divergence_lb.png){width="90%" data-id="plot-cima" fig-align="center" }
+
+![](figs/divergence_ell.png){width="90%" data-id="plot-baixo" fig-align="center" }
+:::
+
+::: {.column width="40%"}
+
+**Parameters:** These plots are evaluated at $L_A = 1.4L_{\text{LSS}}$.
+
+**Domain Size:** $E_2$ has a larger detectable domain than $E_1$, as expected from previous analyses.
+
+**The Plateau ($\ell \approx 30$):** High multipoles do not add new topological information when $L_B > L_{\text{circle}}$.
+
+**Sensitivity:** The behavior of $D_{\text{KL}}$ relative to $\ell_{\text{max}}$ and topological parameters depends on the specific manifold and the observer's location.
+
+
+:::
+
+::::
+
+## New Constraints
+
+If topology is the physical cause of CMB anomalies, then it must contain detectable topological information.
+
+Thus, the KL divergence informs us which topological parameters we need to explore for each manifold. By avoiding regions of the parameter space with no detectable signal, we significantly reduce the computational cost for both observational searches and numerical calculations.
+<!--
+The behaviour of $D_{KL}$ with $\ell_\text{max}$ indicates that correlations induced by topology with $L_B > L_\text{circle}$ are limited to low $\ell$ a potential explanation for large-structures anomalies on CMB.
+-->
+
+The behavior of $D_{KL}$ with $\ell_{\text{max}}$ indicates that correlations induced by a topology with $L_B > L_{\text{circle}}$ are restricted to low-$\ell$ multipoles. This provides a natural explanation for the large-scale anomalies observed in the CMB.
 
 # Conclusion
 ## Conclusion
+
+We reviewed the some of basics elements of cosmic topology and connected them to modern observational searches.
+
+We show that compact Eucliedean  manifolds violates the statiscal isotropy, providing a potential physical origin to anysotropy in CMB temperature statistics.
+
+The ability to detect a non-trivial topology fundamentally relies on measuring this induced statistical anisotropy.
+
+The KL divergence reveals that CMB temperature correlations contain topological information even in the absence of matched circles. However, if topology is to explain CMB anomalies, its characteristic scale cannot significantly exceed $L_{\text{LSS}}$.
+
+**Open Questions:** The extent to which this detectability depends on the specific manifold, its geometric parameters, and the observer’s position remains an open question for future research.
 
 # Bibliography
 <!--## Teste
