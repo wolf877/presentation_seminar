@@ -981,13 +981,25 @@ $$
 C^{E_i;XY}_{lml'm'}=\frac{\left(4\pi\right)^2}{V_{E_i}}\sum_{n\in \mathcal{N}^{E_i}}\Delta^{X}_l\left(k_n\right)\Delta^{Y*}_l\left(k_n\right)\frac{2\pi^2\mathcal{P}^{\mathcal{R}}\left(k_n\right)}{k^3_n}\xi^{E_i;\hat{k}_n}_{k_n l m}\left(\xi^{E_i;\hat{k}_n}_{k_n l' m'}\right)^*
 $$
 
-Visualizing the matrix elements for a specific topology ($E_2$):
+Visualizing the matrix elements for a specific topology ($E_2$ with $L_A=1.4L_{LSS}$):
 
 ![](figs/modes.png){width=75% .nostretch fig-align="center"}
 
 
-
 ## KL Divergence
+
+The Kullback-Leibler divergence is defined as
+$$
+D_{KL} = \left(p||q\right)=\int d\left\{a_{\ell m}\right\} p\left(\left\{a_{\ell m}\right\}\right)\ln\left[\frac{p\left(\left\{a_{\ell m}\right\}\right)}{q\left(\left\{a_{\ell m}\right\}\right)}\right]
+$$
+where
+
+* $p\left(\left\{a_{\ell m}\right\}\right)$ is the probability distribution function for the collection of coefficients $\left\{a_{\ell m}\right\}$  in a non-trivial topology;
+
+* $q\left(\left\{a_{\ell m}\right\}\right)$ is the probabilty ditribution function for the modes in a trivial topology.
+
+
+The $D_{KL}$ quantifies the information gained by discovering that the Universe is described by a non-trivial topology. For some "data" $a_{lm}, $D_{KL}$ favors nontrivial topology if it is bigger than 1. 
 
 ## New Constraint
 
