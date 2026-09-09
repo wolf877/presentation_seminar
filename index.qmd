@@ -48,19 +48,35 @@ format:
 # Introduction
 ## Motivation
 
+::: {.fragment}
+
 The notion that one geometry can be assigned by more than one topology is very old. Even Einstein and de Sitter noted that the $dS$ geometry which was discovered in the topology $\mathbb{R}^1 \times \mathbb{S}^3$ also admits the topology $\mathbb{R}^1 \times \mathbb{P}^3$. 
+
+:::
+
+
 
 <!--Another example is the $AdS$  geometry first discovered in the topology $\mathbb{R}^1 \times \mathbb{S}^3$ but also admis the topology $\mathbb{R}^1\times \mathbb{R}^3$-->
 
-The cosmological solution FLRW metric also admits more than one topology ($\mathbb{E}^3$, $\mathbb{S}^3$, $\mathbb{H}^3$). Howerver, the most common assumption is that the topology of the Universe is simply connected, but there is no reason bayond simplicity to assume this. In fact, there are some indications that the Universe may be multiply connected:
+::: {.fragment}
 
+The cosmological solution FLRW metric also admits more than one topology ($\mathbb{E}^3$, $\mathbb{S}^3$, $\mathbb{H}^3$).
+
+:::
+::: {.fragment}
+Howerver, the most common assumption is that the topology of the Universe is simply connected, but there is no reason bayond simplicity to assume this. In fact, there are some indications that the Universe may be multiply connected:
+:::
+
+:::{.incremental}
 - Quantum processes in the early Universe may have created a non-trivial topology;
-- The closure of of space ins considered as a necessaty condition for quantum theories of gravity;
+- The closure of of space ins considered as a necessary condition for quantum theories of gravity;
 - The universe can be finite and multiply connected, but still have a flat geometry;
 - The comisc microwave background (CMB) apresent a statiscally anisotopic correlations, that would result from a non-trivial topology.
+:::
 
+::: {.fragment}
 Thus, the cosmic topology refers the study of the spatial sections of the manifold describing the Universe, in the largest scales, in other words, the global properties of the Universe. 
-
+:::
 <!--The main goal of this field is to determine the shape and size of the Universe and to find out if the Universe is finite or infinite, and if it is multiply conncected or simply connected-->
 ## Goals
 
@@ -81,23 +97,85 @@ The main objetives of this work are:
 # Elements of Topology
 ## What is topology?
 
+::: {.fragment style="margin-top: -25px;"}
+
 The mathematical framework that studies the continuity of manifolds: topological properties are invariant under continuous deformations: stretching, squeezing, or kneading don't change the topological properties of a manifold. On the other hand, cutting, tearing, or making holes changes them.
 
-Class 1: Soccer ball, rugby ball, and a plate are topologically equivalent;
+:::
 
-Class 2: A coffee cup, a curtaing ring, and a doounut are topologically equivalent;
+:::: {.columns style="text-align: center; margin-top: -85px"}
+
+::: {.column width="50%"}
+::: {style="margin-top: -25px;"}
+::: {.fragment}
+**Type 1**
+:::
+
+
+::: {.fragment style="margin-top: 5px;"}
+![](figs/3.png){height="120px"}
+:::
+
+::: {.fragment style="margin-top: 5px;"}
+![](figs/5.png){height="120px"}
+
+:::
+
+::: {.fragment style="margin-top: 5px;"}
+![](figs/6.png){height="120px"}
+:::
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="margin-top: -25px;"}
+::: {.fragment}
+**Type 2**
+:::
+
+::: {.fragment style="margin-top: 5px;"}
+![](figs/1.png){height="120px"}
+
+:::
+
+::: {.fragment style="margin-top: 5px;"}
+![](figs/2.png){height="120px"}
+
+:::
+
+::: {.fragment style="margin-top: 5px;"}
+![](figs/7.png){height="120px"}
+:::
+:::
+:::
+
+::::
 
 ## Homeomorphism
 
-The continuous transformations are mathematically desccribed by homeomorphisms. 
+::: {.fragment}
+
+The continuous transformations are mathematically described by homeomorphisms. 
+
+:::
+
+::: {.fragment}
 
 Consider the two manifolds $\mathcal{M}_1$ and $\mathcal{M}_2$. A homeomorphism is a continuous map $f: \mathcal{M}_1 \to \mathcal{M}_2$ that has a continuous inverse $f^{-1}: \mathcal{M}_2 \to \mathcal{M}_1$. 
 
+:::
+
+::: {.fragment}
+
 If there exists a homeomorphism between two manifolds, they are said to be homeomorphic. 
 
-Homeomorphic manifolds belongs to the same topological class. Thus, the topological works is classifying manifolds into topological classes.
+:::
 
-## 2D Torus
+::: {.fragment}
+Homeomorphic manifolds belongs to the same topological class. Thus, the topological works is classifying manifolds into topological classes.
+:::
+
+## The 2-Torus
 
 ```{python}
 #| echo: false
@@ -187,16 +265,16 @@ class ToroPlano(Scene):
         sy = altura / 4.0
         
         # 1. O Retângulo Fundamental e Eixos
-        retangulo = Rectangle(width=largura, height=altura, color='#696969', fill_opacity=0.1)
+        retangulo = Rectangle(width=largura, height=altura, color='black', fill_opacity=0.1)
         
         eixo_y = DashedLine(UP*(altura/2), DOWN*(altura/2), color=GRAY, dash_length=0.1)
         eixo_x = DashedLine(LEFT*(largura/2), RIGHT*(largura/2), color=GRAY, dash_length=0.1)
         
         # Marcadores Topológicos e Letras amarrados às bordas dinâmicas
-        seta_cima = Triangle(color='#696969', fill_opacity=1).scale(0.15).rotate(-PI/2).move_to(UP * (altura/2))
-        seta_baixo = Triangle(color='#696969', fill_opacity=1).scale(0.15).rotate(-PI/2).move_to(DOWN * (altura/2))
-        label_i_cima = MathTex("I", color='#696969', font_size=36).next_to(seta_cima, UP, buff=0.1)
-        label_i_baixo = MathTex("I", color='#696969', font_size=36).next_to(seta_baixo, DOWN, buff=0.1)
+        seta_cima = Triangle(color='black', fill_opacity=1).scale(0.15).rotate(-PI/2).move_to(UP * (altura/2))
+        seta_baixo = Triangle(color='black', fill_opacity=1).scale(0.15).rotate(-PI/2).move_to(DOWN * (altura/2))
+        label_i_cima = MathTex("I", color='black', font_size=52).next_to(seta_cima, UP, buff=0.1)
+        label_i_baixo = MathTex("I", color='black', font_size=52).next_to(seta_baixo, DOWN, buff=0.1)
         
         setas_esq = VGroup(
             Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2),
@@ -206,14 +284,14 @@ class ToroPlano(Scene):
             Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2),
             Triangle(color="#696969", fill_opacity=1).scale(0.15).rotate(-PI/2)
         ).arrange(RIGHT, buff=0.1).rotate(PI/2).move_to(RIGHT * (largura/2))
-        label_j_esq = MathTex("J", color='#696969', font_size=36).next_to(setas_esq, LEFT, buff=0.1)
-        label_j_dir = MathTex("J", color='#696969', font_size=36).next_to(setas_dir, RIGHT, buff=0.1)
+        label_j_esq = MathTex("J", color='black', font_size=52).next_to(setas_esq, LEFT, buff=0.1)
+        label_j_dir = MathTex("J", color='black', font_size=52).next_to(setas_dir, RIGHT, buff=0.1)
         
         self.add(retangulo, eixo_x, eixo_y) #seta_cima, seta_baixo, setas_esq, setas_dir)
         self.add(label_i_cima, label_i_baixo, label_j_esq, label_j_dir)
 
         # 2. A Partícula
-        bolinha = Dot(color='#003366', radius=0.15)
+        bolinha = Dot(color='#003366', radius=0.20)
         
         # Coordenadas da trajetória reescaladas proporcional\ell m \elln te
         ponto_inicial = np.array([-1.5 * sx, 1 * sy, 0])
@@ -264,14 +342,22 @@ scene.render()
 
 ::: {.column width="50%"}
 
+::: {.fragment}
+
 One way to construct topological surfaces is by identifying edges pairs of polygons and suitably gluing them together. 
 
+:::
+
+::: {.fragment}
 For example consider a rectangle:
+:::
 
- - Identifying the top and bottom edges, we obtain a cylinder;
+::: {.fragment}
+- Identifying the top and bottom edges, we obtain a cylinder;
 
- - Identifying the left and right edges of the cylinder, we obtain a torus.
+- Identifying the left and right edges of the cylinder, we obtain a torus.
 
+:::
 
 ::: {.fragment}
 ```{=html}
@@ -285,9 +371,17 @@ For example consider a rectangle:
 
 ::: {.column width="50%"}
 
+::: {.fragment}
+
 The $\mathbb{S}^1\times \mathbb{S}^1$ torus which is flat everywhere, and despite the diagram, it is not like that. 
 
+:::
+
+::: {.fragment}
+
 The original rectangle is the fundamental domain of the torus. If one moves in the fundamental domain and reaches one of its edges, he/she will reapear in the opposite edge, a to called equivalent point.
+
+:::
 
 ::: {.fragment}
 ```{=html}
@@ -307,93 +401,116 @@ The original rectangle is the fundamental domain of the torus. If one moves in t
 
 ::: {.column width="40%"}
 
+::: {.fragment}
 Using again the same idea of identifying edges of a polygon, we can construct the 3-torus: $\mathbb{S}^1\times \mathbb{S}^1\times \mathbb{S}^1$.
+:::
 
+::: {.fragment}
 The light emitted backwards crosses the faces of the parallelepiped behind us and reapears in opposite face in front of us. As the light propagates in all directions, we would see an infinity of images of any object in all angles. 
-
+:::
 
 :::
 
 ::: {.column width="60%"}
+
+::: {.fragment}
 ![](figs/T3.png)<!--{.absolute .fragment right="10" top="50" width="50%" height="50%"}-->
+:::
+
 :::
 
 ::::
 
 
-
-
 ## Homotopy
 
-First we define the loop in $\mathcal{M}$ as a path wich starts and ends at the same point $\mathbf{x}$.
+::: {.fragment}
+First we define the loop in $\mathcal{M}$ as a path wich starts and ends at the same point $\vec x$.
+:::
 
+::: {.fragment}
 Two loops $\gamma$ and $\gamma'$ are homotopic if $\gamma$ can be continuously deformed into $\gamma'$.
+:::
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
+::: {.fragment}
 ::: {style="border-right: 2px solid #003366; text-align: center;"}
 
 ![](figs/homotopic.svg){width="85%"}<!--{.absolute .fragment right="10" top="50" width="50%" height="50%"}-->
 :::
 
 :::
+:::
 
 ::: {.column width="50%"}
 ::: {style="padding-left: 3%; text-align: center;"}
+::: {.fragment}
 ![](figs/non_homotopic.svg){width="85%"}
+:::
 :::
 :::
 
 ::::
 
-A manifold  is [simply connected]{.fragment .highlight-custom} if for any point $\mathbf{x}$, two loops are homotopic. If not the manifold is said to be [multi-connected]{.fragment .highlight-custom}. 
-
-Some examples are
+::: {.fragment}
+A manifold  is [simply connected]{.fragment .highlight-custom fragment-index=1} if for any point $\vec x$, two loops are homotopic. If not the manifold is said to be [multi-connected]{.fragment .highlight-custom fragment-index=1}. 
+:::
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
+::: {.fragment}
 ::: {style="border-right: 2px solid #003366; padding-right: 5%;"}
 
-:::{.fragment .highlight-custom style="text-align: center;"}
+:::{.fragment style="text-align: center;"}
 Simple connected
 :::
 
+
+:::{.incremental}
 - Euclidean spaces: $\mathbb{R}^1$, $\mathbb{R}^2$, ..., $\mathbb{R}^n$;
 
 - Spheres: $\mathbb{S}^2$, $\mathbb{S}^3$, ..., $\mathbb{S}^n$.
-
+:::
+:::
 :::
 :::
 
 ::: {.column width="50%"}
 ::: {style="padding-left: 5%;"}
-:::{.fragment .highlight-custom style="text-align: center;"}
+:::{.fragment style="text-align: center;"}
 Multi-connected 
 :::
 
+:::{.incremental}
 - Circle: $\mathbb{S}^1$;
 
 - Cylinder: $\mathbb{S}^1\times \mathbb{R}$
 
 - Torus: $\mathbb{S}^1\times \mathbb{S}^1$, $\mathbb{S}^1\times \mathbb{S}^1\times \mathbb{S}^1$;
+:::
 
 :::
 :::
 
 ::::
 
-## Fundamental Group of the cylinder
+## Fundamental Group
 
-The first fundamental group $\pi_1(\mathcal{M}, \mathbf{x})$ of a manifold $\mathcal{M}$ is the set of all homotopy classes of loops based at $\mathbf{x}$.
+::: {.fragment}
 
+The first fundamental group $\pi_1(\mathcal{M}, \vec x)$ of a manifold $\mathcal{M}$ is the set of all homotopy classes of loops based at $\vec x$.
+
+:::
 :::: {.columns}
 
 ::: {.column width="50%"}
 
+::: {.fragment}
 ::: {style="border-right: 2px solid #003366; text-align: center;"}
 
 ![](figs/homotopic.svg){width="85%"}<!--{.absolute .fragment right="10" top="50" width="50%" height="50%"}-->
@@ -401,10 +518,11 @@ The first fundamental group $\pi_1(\mathcal{M}, \mathbf{x})$ of a manifold $\mat
 Any loop can be deformed to a one point, the group is just the identity.
 
 :::
-
+:::
 :::
 
 ::: {.column width="50%"}
+::: {.fragment}
 ::: {style="padding-left: 3%; text-align: center;"}
 ![](figs/non_homotopic.svg){width="85%"}
 
@@ -412,11 +530,13 @@ The loops $\gamma$ and $\gamma'$ aren't homotopics. The group here is $\mathbb{Z
 
 :::
 :::
+:::
 
 ::::
 
-As the manifold is connected the fundamental group for any point $\mathbf{x}$ is isomorphic to the fundamental group at any other point $\mathbf{x}'$. Thus, $\pi_1(\mathcal{M}, \mathbf{x})$ is independent of the base point and [it is a topological invariant of the manifold $\mathcal{M}$]{.fragment .highlight-custom}.
-
+::: {.fragment}
+As the manifold is connected the fundamental group for any point $\vec x$ is isomorphic to the fundamental group at any other point $\vec x'$. Thus, $\pi_1(\mathcal{M}, \vec x)$ is independent of the base point and [it is a topological invariant of the manifold $\mathcal{M}$]{.fragment .highlight-custom}.
+:::
 
 ## The Universal Covering Space of the cylinder
 ```{python}
@@ -575,80 +695,118 @@ scene.render()
 
 ```
 
-Let $\mathcal{D}$ be a domain on a cylinder, bounded by two circular sections. If we unrroll the cylinder onto a plane, the correspondece between the $\mathcal{D}$ and the projected region $\Delta$, called _development_, is no longer one-to-one.
+::: {.fragment}
+Let $\mathcal{D}$ be a domain on a cylinder, bounded by two circular sections. If we unrroll the cylinder onto a plane, the correspondece between the $\mathcal{D}$ and the projected region $\Delta$, called _development_, is not one-to-one.
+:::
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-
+::: {.fragment}
 ```{=html}
 <video data-autoplay muted playsinline style="width: 100%; max-width: 900px; display: block; margin: 0 auto; pointer-events: none; border: none; background: transparent;">
   <source src="./media_manim/videos/720p30/CoveringSpace.webm" type="video/webm">
 </video>
 ```
 :::
+:::
 
 ::: {.column width="40%"}
 
+::: {.fragment}
 One point $x$ and path $\gamma$ to a point $x'$ can be developed into a point $X$ and a path $\Gamma$ in the plane. 
 
 For a multiply connect domain $\mathcal{D}$  multi-connect there will be several paths $\gamma^1, \gamma^2, \dots$ from $x$ to $x'$, such that in their development, the corresponding paths $\Gamma_1, \Gamma_2, \dots$ generate distincts points $X', x'', \dots$ on $\mathbb{R}^2$
-
+:::
 :::
 
 ::::
 
-::: {.fragment .highlight-custom style="text-align: center;"}
+::: {.fragment}
+::: {.fragment .highlight-custom fragment-index=4 style="text-align: center;"}
 
 The plane $\mathbb{R}^2$ is the universal covering space for the cylinder.
 
+:::
 :::
 
 
 ## The Universal Covering Space
 
+::: {.fragment}
 This ideia can be extended to any manifold throught the following procedure:
+:::
 
+:::{.incremental}
 - Consider $\mathcal{M}$ endowed with a metric $g$. Choose a base point $x_0$ and consider all paths from this point to another point $y$. We build the covering space as a manifold $(\mathcal{C}, h)$ in which every point is obtained from a pair $(y, \gamma_i)$, varying $y$ in all of $\mathcal{M}$.
 
 - The metric $h$ is obtained by defining the interval between $\bar x(x, \gamma)$ and a nearby point $\bar x'(x', \gamma)$ to be equal to the interval ibetween the corresponding points $x$ and $x'$ in $\mathcal{M}$.
+:::
 
+::: {.fragment}
 By construction, the two manifolds are identical locally. However, they can be topologically distinct:
-
+:::
+:::{.incremental}
 - If $\mathcal{M}$ is simply connected, it is identical to $\mathcal{C}$;
 
 - If $\mathcal{M}$ is multiply connected, evey point in $\mathcal{M}$ generates multiple distinct points in $\mathcal{C}$.
+:::
 
+::: {.fragment}
 ::: {.fragment .highlight-custom style="text-align: center;"}
 
 The universal covering space can be understood as "wrapping" of the original manifold.
 
 :::
+:::
 
 ## Holonomy Group
 
+::: {.fragment}
+
 Consider a point $\vec x$ and a closed loop on manifold $\mathcal{M}$. If $\mathcal{M}$ is not simply-connected, the loop in covering space $\mathcal{C}$ is open and generates additional points $\vec{\tilde{x}}', \vec{\tilde{x}}'', \dots$. 
+
+:::
+
+::: {.fragment}
 
 ![](figs/holonomy.svg){width="75%" .nostretch fig-align="center"}
 
+:::
+
+::: {.fragment}
+
 These image points ($\vec{\tilde{x}}', \vec{\tilde{x}}'', \dots$) are generated by a discrete group of isometries $\Gamma$ acting on $\mathcal{C}$. This group acts freely and properly discontinuously. Furthermore, $\Gamma$ is isomorphic to $\pi_1(\mathcal{M})$.
+
+:::
 
 # 3d Euclidean space forms
 ## The Euclidean Space
-
+::: {.fragment}
 The metric for the universial covering space, representing flat spatial geometry, is given by
 $$
-ds^2 = R^2 (dr^2+ r^2 d\theta^2+\sin{\theta}^2d\phi^2)
+ds^2 = R^2 (dr^2+ r^2 d\theta^2+r^2\sin{\theta}^2d\phi^2)
 $$
-Including this universal space, there are 18 flat space forms in total
+:::
 
+::: {.fragment}
+Including this universal space, there are 18 flat space forms in total
+:::
+
+:::{.incremental}
 - 8 are non-compact (open);
 
 - 10 are compact (closed)
 
-We will focus in the compact ones, as the non-compact forms lack discrete eigenmodes. Of the ten compact forms, only six are orientable, and these will be the subject of our discussion.
+:::
 
+::: {.fragment}
+We will focus in the compact ones, as the non-compact forms lack discrete eigenmodes. Of the ten compact forms, only six are orientable, and these will be the subject of our discussion.
+:::
+
+::: {.fragment}
 We can construct all possible manifolds starting from a parallelepiped or hexagonal prisms and using the glueing procedure.
+:::
 
 ## Compact Forms from Parallelepiped
 
@@ -759,32 +917,45 @@ The motion of rotation accompanied by translation is called of corkscrew motiom 
 ::::{.columns}
 ::: {.column width="50%"}
 
+::: {.fragment}
 The eingenmodes in the $E_{18}$ are
 $$
 \Upsilon^{E_{18}}_k(\vec x) = e^{i \vec k \cdot \left(\vec x - \vec x_0\right)}
 $$
+:::
+::: {.fragment}
 with
 $$
 \nabla^2\Upsilon^{E_{18}}_k(\vec x)=-k^2\Upsilon^{E_{18}}_k(\vec x)
 $$
-
+:::
+::: {.fragment}
 The adiabatic curvature perturbation field is
 $$
 \delta^{\mathcal{R}}(\vec x) = \int \frac{d^3k}{\left(2\pi\right)^3}\delta^{\mathcal{R}}(\vec k)\Upsilon^{E_{18}}_k(\vec x)
 $$
-where the amplitudes $\delta^{\mathcal{R}}(\vec k)$ are random variables defined by the dimensionless power spectrum. In general, we are interested in an obervable field $\delta^{\mathcal{x}}$, which related to $\delta^{\mathcal{R}}$ via a transfer function $\Delta^X$.
+:::
+::: {.fragment}
+where the amplitudes $\delta^{\mathcal{R}}(\vec k)$ are random variables defined by the dimensionless power spectrum. In general, we are interested in an obervable field $\delta^{X}$, which related to $\delta^{\mathcal{R}}$ via a transfer function $\Delta^X$.
+:::
 
 :::
 ::: {.column width="50%"}
 
-It is often more convenient to work in spherical cooridnates. By expanding the plane waves in the spherical harmonics, we can rewrite the eingenmodes as 
+::: {.fragment}
+It is often more convenient to work in spherical coordinates. By expanding the plane waves in the spherical harmonics, we can rewrite the eingenmodes as 
+:::
+::: {.fragment}
 $$
 \Upsilon^{E_{i}}_k=4\pi \sum_{lm} j_l\left(k r\right)\xi^{E_i;\hat k}_{klm}Y_{lm}\left(\theta,\phi\right)
 $$
+:::
+::: {.fragment}
 with the harmonic basis in $E_{18}$ given by
 $$
 \xi^{E_{18};\hat k}_{klm} = e^{-i \vec k \cdot\vec x_0}i^lY^*_{lm}(\hat k)\,.
 $$
+:::
 :::
 ::::
 
@@ -793,58 +964,73 @@ $$
 ::::{.columns}
 ::: {.column width="50%"}
 
+::: {.fragment}
 We can direclty write down the scalar field $\delta^{X}$ as 
 $$
 \delta^{X}\left(\theta, \phi\right) = \sum_{lm} a^{E_{18};X}_{lm} Y_{lm}\left(\theta,\phi\right)
 $$
+:::
+::: {.fragment}
 where
 $$
 a^{E_{18}; X}_{lm} = \frac{4\pi}{\left(2\pi\right)^3}\int d^3k \delta^{\mathcal{R}}\left(\vec k\right)\xi^{E_{18};\hat k}_{klm} \Delta_l^X\left(k\right)
 $$
-
+:::
+::: {.fragment}
 Since the random variables are encode in the spherical-harmonics coefficients, the two-point correlation function is given by
 $$
 C^{E_{18}; XY}_{lml'm'} \equiv \langle a_{lm}^X a_{l'm'}^{Y*} \rangle = C_l^{XY}\delta_{ll'}\delta_{mm'}
 $$
+:::
+::: {.fragment}
 This diagonal structure emerges from the isotropy o space $E_{18}$.
 :::
+:::
 ::: {.column width="50%"}
-
+::: {.fragment}
 The non-trivial topology modifies the harmonic basis such that:
-
-:::{incremental}
+:::
+:::{.incremental}
 
 1. Only certain wavevectors $\vec k$ are allowed by the boundary conditions. For the compact spaces they form  a discrete lattice;
 
 2. The eingenmodes are not single covering-space eingenmodes but instead linear combinitions with different $\vec k$ of the same magnitude.
 :::
 
+::: {.fragment}
 These effects characterize the violation of statistical isotropy, in contrast with the $E_{18}$. As consequence, the correlation matrix of the two-point function is not diagonal in such topologies:
 $$
 \langle a^X_{lm} a^{Y*}_{l'm'} \rangle = C^{XY*}_{lml'm'}\,.
 $$
 :::
-
+:::
 ::::
 
 ## General Considerations
 
+::: {.fragment}
 Each eigenmode $\Upsilon^{E_{i}}_k(\vec x)$ must be invariant under every possible group transformation $G_\alpha\in \Gamma^{E_i}$
 $$
 \Upsilon^{E_{i}}_k\left(G_\alpha \vec x\right) = \Upsilon^{E_{i}}_k\left(x\right)
 $$
-
+:::
+::: {.fragment}
 For example, for a pure translation $\vec x\to \vec x + \vec T^{E_i}$, one must have 
 $$
 e^{i \vec k \cdot\left[ \left(\vec x -\vec x_0\right)+\vec T^{E_i}\right]} = e^{i \vec k \cdot\left(\vec x -\vec x_0\right)}\quad\text{Consequently}\quad \vec k \cdot\vec T^{E_i} = 2\pi n, \quad\text{for}\;  n\in \mathbb{Z}.
 $$
-
+:::
+::: {.fragment}
 This discretization is valid to manifolds of pure translations, such as the $E_1$. For manifolds with rotation, where the transformation is given $\vec x\to \mathbf{M}\vec x+\vec T^{E_i}$, additional conditions are imposed on the eigenmodes.
-
+:::
+::: {.fragment}
 Since harmonic basis is modified by each topology, the correlation matrix is also altered. For the compact forms, it takes the expression
+:::
+::: {.fragment}
 $$
 C^{E_i;XY}_{lml'm'}=\frac{\left(4\pi\right)^2}{V_{E_i}}\sum_{n\in \mathcal{N}^{E_i}}\Delta^{X}_l\left(k_n\right)\Delta^{Y*}_l\left(k_n\right)\frac{2\pi^2\mathcal{P}^{\mathcal{R}}\left(k_n\right)}{k^3_n}\xi^{E_i;\hat{k}_n}_{k_n l m}\left(\xi^{E_i;\hat{k}_n}_{k_n l' m'}\right)^*
 $$
+:::
 
 # The CMB temperature
 
@@ -867,14 +1053,18 @@ $$
 
 ::: {.column width="40%"}
 
+::: {.fragment}
 The temperature fluctuations of the CMB are usually writen in terms of multipole coefficients
 $$
 \frac{\Delta T}{T}\left(\hat k\right) = \sum_{l=2}^{\infty} \sum_{m=-l}^{m=l}a_{lm}Y^{m}_l\left(\hat k\right)
 $$
+:::
+::: {.fragment}
 where the unit vector $\hat k$ denotes a given line of sight on the sky. This exactly matches our previous definition to $\delta^X$.
-
+:::
+::: {.fragment}
 Consequently, tracing how a non-trivial topology modifies these $a_{lm}$ coefficients is the key to understanting the violation of the statistical isotropy observed in the universe.
-
+:::
 
 <!--
 <br>
@@ -899,21 +1089,26 @@ $$
 ::::{.columns}
 ::: {.column width="40%"}
 
-
+::: {.fragment fragment-index=1}
 In the 1990s, an important conceptual step forward was made in the search of cosmic topology imprint on CMB: the idea of the matched circles.
+:::
 
-As seen in the 3-torus case, compacts topologies create multiple copies of objects. If any our clonea are situated a distance smaller than diameter of the last scatter surface (LSS), the our observation sphere intersects the clones' spheres, leading to the _self intersections_ of the LSS.
+::: {.fragment fragment-index=2}
+As seen in the 3-torus case, compacts topologies create multiple copies of objects. If any our clones are situated a distance smaller than diameter of the last scatter surface (LSS), the our observation sphere intersects the clones' spheres, leading to the _self intersections_ of the LSS.
+:::
 
+::: {.fragment fragment-index=4}
 Each intersections produces a pair of correlated circles on the CMB sky.
-
+:::
 <!--
 It's very important to highlight that temperature is not constant along the along the circles, but identical temperatures at identified points lying along pairs of circles.
 -->
 :::
 ::: {.column width="60%"}
 
+::: {.fragment fragment-index=3}
 ![](figs/lss_matching_circles.gif){width=100% .nostretch fig-align="center"}
-
+:::
 :::
 ::::
 
@@ -921,7 +1116,7 @@ It's very important to highlight that temperature is not constant along the alon
 
 ::::{.columns}
 ::: {.column width="40%"}
-
+:::{.incremental}
 * The existence of matching circles depends only on an isotropic geometry and a small-enough topological scale.
 
 * However, their size, center locations, and phase matching depend directly on the specific topology ($E_i$), the length of the fundamental domain ($L_A$), and the position along the corkscrew axis ($L_B$).
@@ -929,7 +1124,7 @@ It's very important to highlight that temperature is not constant along the alon
 * Searching for these circles in the CMB is a computational challenge due to the vast parameter space of centers, radii, and relative phases. 
 
 * This search was performed using both WMAP and Planck data, and ultimately, no matched circles were found.
-
+:::
 :::
 
 ::: {.column width="60%"}
@@ -939,9 +1134,12 @@ It's very important to highlight that temperature is not constant along the alon
 
 ## Seeing Matched Circles: Beyond $E_3$
 
+::: {.fragment}
 Changing the fundamental domain from a rectangular prism to hexagonal geometries ($E_4$ and $E_5$) drastically alters the spatial distribution and allowed radii of the circles.
-
+:::
 <br>
+
+::: {.fragment}
 
 ::: {layout="[[45, 45, 10]]" layout-valign="center"}
 ![](figs/matched_E4.png){.nostretch}
@@ -950,56 +1148,83 @@ Changing the fundamental domain from a rectangular prism to hexagonal geometries
 
 ![](figs/label_2.png){.nostretch}
 :::
+:::
 
 
 ## From the Non-Observation to a Constraint
 
+::: {.fragment}
+
 We can translate the non-observation into constraint on the parameters $L_A$ and $L_B$:
 
+:::
 ::::{.columns}
 
 ::: {.column width="60%"}
+::: {.fragment}
 ![](figs/curves.png){.nostretch}
+:::
 :::
 
 ::: {.column width="40%"}
 
+::: {.fragment .fade-right}
 The parameter region below the curves represents values where observers in 95% of the manifold locations would detect at least one pair of matching circles
-
+:::
+::: {.fragment .fade-right}
 For $E_1$, the boundary is simply $(L_A/L_{\text{LSS}}, L_B/L_{\text{LSS}}) = (1, 1)$. As rotations are introduced ($E_2$ to $E_5$), they weaken the constraint on $L_B$.
-
+:::
+::: {.fragment .fade-right}
 The region of testable parameters is larger than previously believed.
 :::
-
+:::
 ::::
 
 # New Constraints
 ## Back to the multipole coefficients
 
+::: {.fragment}
+
 Recalling the covariance matrix equation:
+
+:::
+::: {.fragment}
 $$
 C^{E_i;XY}_{l\ell m \ell' m'}=\frac{\left(4\pi\right)^2}{V_{E_i}}\sum_{n\in \mathcal{N}^{E_i}}\Delta^{X}_\ell\left(k_n\right)\Delta^{Y*}_\ell\left(k_n\right)\frac{2\pi^2\mathcal{P}^{\mathcal{R}}\left(k_n\right)}{k^3_n}\xi^{E_i;\hat{k}_n}_{k_n \ell m}\left(\xi^{E_i;\hat{k}_n}_{k_n \ell' m'}\right)^*
 $$
-
+:::
+::: {.fragment}
 Visualizing the matrix elements for a specific topology ($E_2$ with $L_A=1.4L_{LSS}$):
 
 ![](figs/modes.png){width=75% .nostretch fig-align="center"}
 
+:::
 
 ## KL Divergence
 
+::: {.fragment}
 The Kullback-Leibler divergence is defined as
+:::
+::: {.fragment}
 $$
 D_{KL} = \left(p||q\right)=\int d\left\{a_{\ell m}\right\} p\left(\left\{a_{\ell m}\right\}\right)\ln\left[\frac{p\left(\left\{a_{\ell m}\right\}\right)}{q\left(\left\{a_{\ell m}\right\}\right)}\right]
 $$
+:::
+::: {.fragment}
 where
+:::
+:::{.incremental}
 
 * $p\left(\left\{a_{\ell m}\right\}\right)$ is the probability distribution function for the collection of coefficients $\left\{a_{\ell m}\right\}$  in a non-trivial topology;
 
 * $q\left(\left\{a_{\ell m}\right\}\right)$ is the probabilty ditribution function for the modes in a trivial topology.
 
+:::
+::: {.fragment}
 
 The $D_{KL}$ quantifies the information gained by discovering that the Universe is described by a non-trivial topology. For any given realization of $a_{\ell m}$, a value $D_{KL}>1$ indicates that non-trivial topology is statistically favored. 
+
+:::
 
 ## Interpreting the Divergence {auto-animate=true}
 
@@ -1021,14 +1246,25 @@ The $D_{KL}$ quantifies the information gained by discovering that the Universe 
 
 ::: {.column width="40%"}
 
+::: {.fragment}
+
 **Parameters:** These plots are evaluated at $L_A = 1.4L_{\text{LSS}}$.
+
+:::
+::: {.fragment}
 
 **Domain Size:** $E_2$ has a larger detectable domain than $E_1$, as expected from previous analyses.
 
+:::
+::: {.fragment}
+
 **The Plateau ($\ell \approx 30$):** High multipoles do not add new topological information when $L_B > L_{\text{circle}}$.
 
-**Sensitivity:** The behavior of $D_{\text{KL}}$ relative to $\ell_{\text{max}}$ and topological parameters depends on the specific manifold and the observer's location.
+:::
+::: {.fragment}
 
+**Sensitivity:** The behavior of $D_{\text{KL}}$ relative to $\ell_{\text{max}}$ and topological parameters depends on the specific manifold and the observer's location.
+:::
 
 :::
 
@@ -1036,27 +1272,51 @@ The $D_{KL}$ quantifies the information gained by discovering that the Universe 
 
 ## New Constraints
 
+::: {.fragment}
+
 If topology is the physical cause of CMB anomalies, then it must contain detectable topological information.
+
+:::
+::: {.fragment}
 
 Thus, the KL divergence informs us which topological parameters we need to explore for each manifold. By avoiding regions of the parameter space with no detectable signal, we significantly reduce the computational cost for both observational searches and numerical calculations.
 <!--
 The behaviour of $D_{KL}$ with $\ell_\text{max}$ indicates that correlations induced by topology with $L_B > L_\text{circle}$ are limited to low $\ell$ a potential explanation for large-structures anomalies on CMB.
 -->
 
-The behavior of $D_{KL}$ with $\ell_{\text{max}}$ indicates that correlations induced by a topology with $L_B > L_{\text{circle}}$ are restricted to low-$\ell$ multipoles. This provides a natural explanation for the large-scale anomalies observed in the CMB.
+:::
+::: {.fragment}
 
+The behavior of $D_{KL}$ with $\ell_{\text{max}}$ indicates that correlations induced by a topology with $L_B > L_{\text{circle}}$ are restricted to low-$\ell$ multipoles. This provides a natural explanation for the large-scale anomalies observed in the CMB.
+:::
 # Conclusion
 ## Conclusion
 
+::: {.fragment}
+
 We reviewed the some of basics elements of cosmic topology and connected them to modern observational searches.
+
+:::
+::: {.fragment}
 
 We show that compact Eucliedean  manifolds violates the statiscal isotropy, providing a potential physical origin to anysotropy in CMB temperature statistics.
 
+:::
+::: {.fragment}
+
 The ability to detect a non-trivial topology fundamentally relies on measuring this induced statistical anisotropy.
+
+:::
+::: {.fragment}
 
 The KL divergence reveals that CMB temperature correlations contain topological information even in the absence of matched circles. However, if topology is to explain CMB anomalies, its characteristic scale cannot significantly exceed $L_{\text{LSS}}$.
 
+:::
+::: {.fragment}
+
 **Open Questions:** The extent to which this detectability depends on the specific manifold, its geometric parameters, and the observer’s position remains an open question for future research.
+
+:::
 
 # Bibliography
 <!--## Teste
